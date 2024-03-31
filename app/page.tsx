@@ -17,6 +17,7 @@ export default function Home() {
     const { data } = await supabase
       .from("sudoku_puzzles")
       .select()
+      .eq("id", "c0bcd6f3-8406-4bb6-a11e-e043866f62a1")
       .limit(1)
       .maybeSingle();
     const puzzle = parsePuzzleString(data?.puzzle);
@@ -54,10 +55,10 @@ function Grid(props: {
 }) {
   const { game, setGame } = props;
 
-  const onChange = (index: number, value: number) => {
+  const onChange = (index: number, value: number | null) => {
     setGame((prevGame) => {
       const newGame = [...prevGame];
-      newGame[index] = { type: "empty", value };
+      newGame[index] = { ...newGame[index], value };
       return newGame;
     });
   };
@@ -81,24 +82,38 @@ function Cell(props: {
   index: number;
   type: string;
   value: number | null;
-  onChange: (index: number, value: number) => void;
+  onChange: (index: number, value: number | null) => void;
 }) {
   const { value, type, index, onChange } = props;
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const regex = /^[1-9]|Backspace|ArrowUp|ArrowDown$/;
+    if (!regex.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
-    onChange(index, value);
+    const value = e.target.value;
+    if (value === "") {
+      onChange(index, null);
+    } else {
+      const parsedInt = parseInt(value[value.length - 1]);
+      onChange(index, parsedInt);
+    }
   };
 
   return (
     <input
       className="bg-gray-200 flex items-center justify-center text-center"
       value={value ?? ""}
+      onKeyDown={handleKeyDown}
       onChange={handleChange}
       readOnly={type === "prefilled"}
       type="number"
       min={1}
       max={9}
+      step={1}
     />
   );
 }
