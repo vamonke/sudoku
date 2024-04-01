@@ -26,11 +26,24 @@ export default function Home() {
     setGame(puzzle);
   };
 
+  const restart = () => {
+    setGame((prevGame) => {
+      const newGame = prevGame.map((cell) => {
+        if (cell.type === "prefilled") return cell;
+        return { ...cell, value: null };
+      });
+      return newGame;
+    });
+  };
+
   return (
     <main className="flex flex-col h-full">
-      <div className="flex flex-col justify-center items-center p-4">
-        <h1 className="text-xl">SUDOKU</h1>
-        <div>{result ? "Completed" : ""}</div>
+      <div className="p-4">
+        <h1 className="text-xl text-center">SUDOKU</h1>
+        <div className="flex flex-row gap-4 justify-center items-center">
+          <div>{result ? "Completed" : "Not completed"}</div>
+          <button onClick={restart}>Restart</button>
+        </div>
       </div>
       <div className="grow flex flex-col justify-center items-center pb-8">
         <div className="aspect-square" style={{ height: 512, width: 512 }}>
