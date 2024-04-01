@@ -1,72 +1,55 @@
 import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Puzzle, Cell, GameStatus, GameMove } from "@/types";
+import { Board, Cell, GameStatus, GameMove, SudokuPuzzle } from "@/types";
 
-export function useGame() {
-  const [id, setId] = useState<string | null>(null);
-  const [puzzle, setPuzzle] = useState<Puzzle | null>(null); // TODO: useReducer?
+export function useGame(initialPuzzle: SudokuPuzzle) {
+  const [puzzleId, setPuzzleId] = useState<string>(initialPuzzle.id);
+  const [board, setBoard] = useState<Board>(
+    parsePuzzleString(initialPuzzle.puzzle)
+  ); // TODO: useReducer?
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showConflicts, setShowConflicts] = useState<boolean>(true);
   const [moves, setMoves] = useState<GameMove[]>([]);
-
-  const onLoad = useCallback(async () => {
-    const supabase = createClient();
-    const { data } = await supabase.rpc("get_random_puzzle");
-
-    if (!data) return;
-    // TODO: Handle error
-
-    const puzzle = parsePuzzleString(data.puzzle);
-    if (puzzle) {
-      setPuzzle(puzzle);
-      setId(data.id);
-    }
-  }, []);
+  const [cells, setCells] = useState<Cell[]>([]);
+  const [gameStatus, setGameStatus] = useState<GameStatus>({
+    isComplete: false,
+  });
 
   const newGame = useCallback(async () => {
-    console.log("fetchPuzzle", id);
     const supabase = createClient();
     const { data } = await supabase.rpc("get_random_puzzle", {
-      pid: id,
+      pid: puzzleId,
     });
-
     if (!data) return;
     // TODO: Handle error
-
-    const puzzle = parsePuzzleString(data.puzzle);
-    if (puzzle) {
-      setPuzzle(puzzle);
-      setId(data.id);
+    const newBoard = parsePuzzleString(data.puzzle);
+    if (newBoard) {
+      setBoard(newBoard);
+      setPuzzleId(data.id);
     }
-  }, [id]);
-
-  useEffect(() => {
-    onLoad();
-  }, [onLoad]);
+  }, [puzzleId]);
 
   const restart = () => {
-    console.log("restart");
-    setPuzzle((prevPuzzle) => {
-      if (!prevPuzzle) return null;
-      const newPuzzle = prevPuzzle.map((cell) => {
+    console.log("Restart");
+    setBoard((prevBoard) => {
+      const newBoard = prevBoard.map((cell) => {
         if (cell.type === "prefilled") return cell;
         return { ...cell, value: null };
       });
-      return newPuzzle;
+      return newBoard;
     });
   };
 
   const onChangeCell = (index: number, value: number | null) => {
     const newValue = value;
-    const prevValue = puzzle?.[index].value ?? null;
+    const prevValue = board?.[index].value ?? null;
 
-    setPuzzle((prevPuzzle) => {
-      if (!prevPuzzle) return null;
-      const newPuzzle = prevPuzzle.map((cell) => {
+    setBoard((prevBoard) => {
+      const newBoard = prevBoard.map((cell) => {
         if (cell.index !== index) return cell;
         return { ...cell, value };
       });
-      return newPuzzle;
+      return newBoard;
     });
 
     setMoves((prevMoves) => {
@@ -76,23 +59,23 @@ export function useGame() {
   };
 
   const undo = useCallback(() => {
-    if (moves.length === 0 || !puzzle) return;
+    if (moves.length === 0 || !board) return;
 
     const lastMove = moves[moves.length - 1];
-    const newPuzzle = puzzle.map((cell, index) => {
+    const newBoard = board.map((cell, index) => {
       if (index === lastMove.index) {
         return { ...cell, value: lastMove.prevValue };
       }
       return cell;
     });
 
-    setPuzzle(newPuzzle);
+    setBoard(newBoard);
 
     setMoves((prevMoves) => {
       const newMoves = prevMoves.slice(0, -1);
       return newMoves;
     });
-  }, [moves, puzzle]);
+  }, [moves, board]);
 
   useEffect(() => {
     const eventListener = (event: KeyboardEvent) => {
@@ -121,13 +104,21 @@ export function useGame() {
     setShowConflicts((prev) => !prev);
   };
 
-  const gameStatus = evaluateGame(puzzle); // TODO: useMemo
-  const cells = evaluateCells(puzzle, gameStatus, selectedIndex); // TODO: useMemo
+  // const gameStatus = evaluateGame(board);
+
+  useEffect(() => {
+    const gameStatus = evaluateGame(board);
+    setGameStatus(gameStatus);
+  }, [board]);
+
+  useEffect(() => {
+    const cellStatus = getCellStatus(board, gameStatus, selectedIndex);
+    setCells(cellStatus);
+  }, [selectedIndex, gameStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
-    id,
     cells,
-    // puzzle,
+    board,
     restart,
     undo,
     newGame,
@@ -140,7 +131,7 @@ export function useGame() {
   };
 }
 
-const parsePuzzleString = (puzzle: string): Puzzle => {
+const parsePuzzleString = (puzzle: string): Board => {
   return puzzle.split("").map((cell, index) => {
     const isEmpty = cell === ".";
     const type = isEmpty ? "empty" : "prefilled";
@@ -153,55 +144,53 @@ const parsePuzzleString = (puzzle: string): Puzzle => {
   });
 };
 
-const evaluateGame = (puzzle: Puzzle | null): GameStatus => {
-  if (!puzzle) return { isComplete: false };
+const evaluateGame = (board: Board): GameStatus => {
+  console.log("Evaluating game");
 
   const emptySet = new Set(
-    puzzle.filter(({ value }) => !value).map(({ index }) => index)
+    board.filter(({ value }) => !value).map(({ index }) => index)
   );
 
-  const conflictMap: Map<number, number[]> = new Map();
+  const conflictSet = new Set<number>();
 
-  puzzle.forEach((cell, index) => {
+  board.forEach((cell, index) => {
     if (!cell.value) return;
     const relevantIndexes = RELATED_INDEX_MAP[index];
-    const conflicts = Array.from(relevantIndexes).filter((relatedIndex) => {
-      return puzzle[relatedIndex].value === cell.value;
+    const hasConflict = relevantIndexes.some((relatedIndex) => {
+      return board[relatedIndex].value === cell.value;
     });
-    if (conflicts.length > 0) {
-      conflictMap.set(index, conflicts);
+    if (hasConflict) {
+      conflictSet.add(index);
     }
   });
 
-  const isComplete = emptySet.size === 0 && conflictMap.size === 0;
+  const isComplete = emptySet.size === 0 && conflictSet.size === 0;
 
   return {
-    conflictMap,
+    conflictSet,
     emptySet,
     isComplete,
   };
 };
 
-const evaluateCells = (
-  puzzle: Puzzle,
+const getCellStatus = (
+  board: Board,
   gameStatus: GameStatus,
   selectedIndex: number | null
-): Puzzle => {
-  if (!puzzle) return null;
-
+): Board => {
+  console.log("Get highlights cells");
   const relevantIndexes =
     selectedIndex === null ? [] : RELATED_INDEX_MAP[selectedIndex];
-
-  const cells = puzzle.map((cell, index): Cell => {
+  const cells = board.map((cell, index): Cell => {
     const isSelected = index === selectedIndex;
-    const isHighlighted = Array.from(relevantIndexes).includes(index);
-    const hasConflictWithSelected = gameStatus.conflictMap?.has(index) ?? false;
+    const isHighlighted = relevantIndexes.includes(index);
+    const hasConflict = gameStatus.conflictSet?.has(index) ?? false;
     return {
       ...cell,
       status: {
         isSelected,
         isHighlighted,
-        hasConflictWithSelected,
+        hasConflict,
       },
     };
   });

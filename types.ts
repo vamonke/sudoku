@@ -14,13 +14,18 @@ export type GameMove = {
 export type CellStatus = {
   isSelected: boolean;
   isHighlighted: boolean;
-  hasConflictWithSelected: boolean;
+  hasConflict: boolean;
 };
 
-export type Puzzle = Cell[] | null;
+export type Board = Cell[];
+
+export type SudokuPuzzle = {
+  id: string;
+  puzzle: string;
+};
 
 export type GameStatus = {
-  conflictMap?: Map<number, number[]>;
+  conflictSet?: Set<number>;
   emptySet?: Set<number>;
   isComplete: boolean;
 };
