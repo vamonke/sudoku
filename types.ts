@@ -5,6 +5,12 @@ export type Cell = {
   status?: CellStatus;
 };
 
+export type GameMove = {
+  index: number;
+  prevValue: number | null;
+  newValue: number | null;
+};
+
 export type CellStatus = {
   isSelected: boolean;
   isHighlighted: boolean;

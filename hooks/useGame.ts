@@ -1,15 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Puzzle, Cell, GameStatus } from "@/types";
+import { Puzzle, Cell, GameStatus, GameMove } from "@/types";
 
 export function useGame() {
   const [id, setId] = useState<string | null>(null);
   const [puzzle, setPuzzle] = useState<Puzzle | null>(null); // TODO: useReducer?
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showConflicts, setShowConflicts] = useState<boolean>(true);
-  // TODO: Add loading state
-
-  const undo = () => {};
+  const [moves, setMoves] = useState<GameMove[]>([]);
 
   const onLoad = useCallback(async () => {
     const supabase = createClient();
@@ -43,21 +41,6 @@ export function useGame() {
   }, [id]);
 
   useEffect(() => {
-    const eventListener = (event: KeyboardEvent) => {
-      console.log("KeyUp:", event.key);
-      if (event.key === "r") restart(); // TODO: Add confirmation
-      if (event.key === "n") newGame(); // TODO: Add confirmation
-      if (event.key === "h") toggleShowConflicts(); // TODO: Add confirmation
-      if (event.key === "z") undo();
-    };
-
-    window.addEventListener("keyup", eventListener);
-    return () => {
-      window.removeEventListener("keyup", eventListener);
-    };
-  }, [newGame]);
-
-  useEffect(() => {
     onLoad();
   }, [onLoad]);
 
@@ -74,6 +57,9 @@ export function useGame() {
   };
 
   const onChangeCell = (index: number, value: number | null) => {
+    const newValue = value;
+    const prevValue = puzzle?.[index].value ?? null;
+
     setPuzzle((prevPuzzle) => {
       if (!prevPuzzle) return null;
       const newPuzzle = prevPuzzle.map((cell) => {
@@ -82,7 +68,46 @@ export function useGame() {
       });
       return newPuzzle;
     });
+
+    setMoves((prevMoves) => {
+      const newMoves = [...prevMoves, { index, newValue, prevValue }];
+      return newMoves;
+    });
   };
+
+  const undo = useCallback(() => {
+    if (moves.length === 0 || !puzzle) return;
+
+    const lastMove = moves[moves.length - 1];
+    const newPuzzle = puzzle.map((cell, index) => {
+      if (index === lastMove.index) {
+        return { ...cell, value: lastMove.prevValue };
+      }
+      return cell;
+    });
+
+    setPuzzle(newPuzzle);
+
+    setMoves((prevMoves) => {
+      const newMoves = prevMoves.slice(0, -1);
+      return newMoves;
+    });
+  }, [moves, puzzle]);
+
+  useEffect(() => {
+    const eventListener = (event: KeyboardEvent) => {
+      console.log("KeyUp:", event.key);
+      if (event.key === "r") restart(); // TODO: Add confirmation
+      if (event.key === "n") newGame(); // TODO: Add confirmation
+      if (event.key === "h") toggleShowConflicts(); // TODO: Add confirmation
+      if (event.key === "z") undo();
+    };
+
+    window.addEventListener("keyup", eventListener);
+    return () => {
+      window.removeEventListener("keyup", eventListener);
+    };
+  }, [newGame, undo]);
 
   const onFocusCell = (index: number) => {
     setSelectedIndex(index);
