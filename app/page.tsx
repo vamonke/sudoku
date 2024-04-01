@@ -17,7 +17,7 @@ export default function Home() {
     const { data } = await supabase
       .from("sudoku_puzzles")
       .select()
-      .eq("id", "c0bcd6f3-8406-4bb6-a11e-e043866f62a1")
+      .eq("id", "c0bcd6f3-8406-4bb6-a11e-e043866f62a1") // TODO: Randomize puzzle
       .limit(1)
       .maybeSingle();
     const puzzle = parsePuzzleString(data?.puzzle);
@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col h-full">
-      <h1 className="text-xl text-center p-6">Sudoku</h1>
+      <h1 className="text-xl text-center p-6">SUDOKU</h1>
       <div className="grow flex flex-col justify-center items-center pb-8">
         <div className="aspect-square" style={{ height: 512, width: 512 }}>
           <Grid game={game} setGame={setGame} />
