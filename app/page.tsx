@@ -12,6 +12,8 @@ export default function Home() {
     fetchPuzzle();
   }, []);
 
+  const result = evaluate(game);
+
   const fetchPuzzle = async () => {
     const supabase = createClient();
     const { data } = await supabase
@@ -26,7 +28,10 @@ export default function Home() {
 
   return (
     <main className="flex flex-col h-full">
-      <h1 className="text-xl text-center p-6">SUDOKU</h1>
+      <div className="flex flex-col justify-center items-center p-4">
+        <h1 className="text-xl">SUDOKU</h1>
+        <div>{result ? "Completed" : ""}</div>
+      </div>
       <div className="grow flex flex-col justify-center items-center pb-8">
         <div className="aspect-square" style={{ height: 512, width: 512 }}>
           <Grid game={game} setGame={setGame} />
@@ -117,3 +122,43 @@ function Cell(props: {
     />
   );
 }
+
+const evaluate = (game: { type: string; value: number | null }[]) => {
+  // TODO: Optimize this function?
+  // TODO: Add error messages
+
+  const isValid = game.every(
+    ({ value }) => value && Number.isInteger(value) && value >= 1 && value <= 9
+  );
+  if (!isValid) return false;
+
+  const gameMatrix = new Array(9).fill(0).map(() => new Array(9).fill(0));
+  game.forEach((cell, index) => {
+    const row = Math.floor(index / 9);
+    const col = index % 9;
+    gameMatrix[row][col] = cell.value;
+  });
+
+  gameMatrix.forEach((row, y) => {
+    // Check row
+    if (new Set(row).size !== 9) return false;
+
+    // Check column
+    row.forEach((_, x) => {
+      if (new Set(gameMatrix.map((row) => row[x])).size !== 9) return false;
+    });
+  });
+
+  // Check 3x3
+  for (let y = 0; y < 9; y += 3) {
+    for (let x = 0; x < 9; x += 3) {
+      const row1 = gameMatrix[y].slice(x, x + 3);
+      const row2 = gameMatrix[y + 1].slice(x, x + 3);
+      const row3 = gameMatrix[y + 2].slice(x, x + 3);
+      const sectionSet = new Set([...row1, ...row2, ...row3]);
+      if (sectionSet.size !== 9) return false;
+    }
+  }
+
+  return true;
+};
