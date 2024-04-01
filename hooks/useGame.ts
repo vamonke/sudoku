@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Puzzle } from "@/types";
 
@@ -6,13 +6,24 @@ export function useGame() {
   const [id, setId] = useState<string | null>(null);
   const [puzzle, setPuzzle] = useState<Puzzle | null>(null); // TODO: useReducer?
   // TODO: Add loading state
-  // TODO: Add conflicts state
 
-  useEffect(() => {
-    fetchPuzzle();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const onLoad = useCallback(async () => {
+    console.log("onLoad");
+    const supabase = createClient();
+    const { data } = await supabase.rpc("get_random_puzzle");
 
-  const fetchPuzzle = async () => {
+    if (!data) return;
+    // TODO: Handle error
+
+    const puzzle = parsePuzzleString(data.puzzle);
+    if (puzzle) {
+      setPuzzle(puzzle);
+      setId(data.id);
+    }
+  }, []);
+
+  const newGame = useCallback(async () => {
+    console.log("fetchPuzzle", id);
     const supabase = createClient();
     const { data } = await supabase.rpc("get_random_puzzle", {
       pid: id,
@@ -26,9 +37,27 @@ export function useGame() {
       setPuzzle(puzzle);
       setId(data.id);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    const eventListener = (event: KeyboardEvent) => {
+      console.log("KeyUp:", event.key);
+      if (event.key === "r") restart(); // TODO: Add confirmation
+      if (event.key === "n") newGame(); // TODO: Add confirmation
+    };
+
+    window.addEventListener("keyup", eventListener);
+    return () => {
+      window.removeEventListener("keyup", eventListener);
+    };
+  }, [newGame]);
+
+  useEffect(() => {
+    onLoad();
+  }, [onLoad]);
 
   const restart = () => {
+    console.log("restart");
     setPuzzle((prevPuzzle) => {
       if (!prevPuzzle) return null;
       const newPuzzle = prevPuzzle.map((cell) => {
@@ -68,10 +97,6 @@ export function useGame() {
       });
       return newPuzzle;
     });
-  };
-
-  const newGame = async () => {
-    await fetchPuzzle();
   };
 
   const onFocusCell = (index: number) => {
