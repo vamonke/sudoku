@@ -18,7 +18,7 @@ export default function Home() {
     <main className="flex flex-col h-full">
       <div className="p-4">
         <h1 className="text-xl text-center">SUDOKU</h1>
-        <div className="flex flex-row gap-4 justify-center items-center">
+        <div className="flex flex-row gap-4 mt-2 justify-center items-center">
           <div>{result ? "Completed" : "Not completed"}</div>
           <button onClick={restart}>Restart</button>
           <button onClick={newGame}>New Game</button>
@@ -36,6 +36,11 @@ export default function Home() {
           ) : (
             <EmptyGrid />
           )}
+        </div>
+      </div>
+      <div className="flex flex-row gap-4 justify-center items-center p-4">
+        <div>
+          Use arrow keys to navigate. Use numbers 1-9 to fill in the cells.
         </div>
       </div>
     </main>
