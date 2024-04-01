@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Puzzle } from "@/types";
+import { Puzzle, Cell, GameStatus } from "@/types";
 
 export function useGame() {
   const [id, setId] = useState<string | null>(null);
   const [puzzle, setPuzzle] = useState<Puzzle | null>(null); // TODO: useReducer?
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showConflicts, setShowConflicts] = useState<boolean>(true);
   // TODO: Add loading state
 
   const onLoad = useCallback(async () => {
-    console.log("onLoad");
     const supabase = createClient();
     const { data } = await supabase.rpc("get_random_puzzle");
 
@@ -72,95 +72,39 @@ export function useGame() {
   const onChangeCell = (index: number, value: number | null) => {
     setPuzzle((prevPuzzle) => {
       if (!prevPuzzle) return null;
-      const newPuzzle = prevPuzzle.map((cell, i) => {
-        if (i === index) {
-          return { ...cell, value, hasConflict: false };
-        }
-
-        if (value === null) return { ...cell, hasConflict: false };
-
-        const selectedX = index % 9;
-        const selectedY = Math.floor(index / 9);
-        const selectedSubgrid = getSubgrid(index);
-
-        const x = i % 9;
-        const y = Math.floor(i / 9);
-        const subgrid = cell.subgrid;
-        const relatedCell =
-          x === selectedX || y === selectedY || subgrid === selectedSubgrid; // TODO: Fix repeated code
-
-        let hasConflict = false;
-        if (relatedCell && cell.value) {
-          hasConflict = cell.value === value;
-        }
-
-        return { ...cell, hasConflict };
+      const newPuzzle = prevPuzzle.map((cell) => {
+        if (cell.index !== index) return cell;
+        return { ...cell, value };
       });
       return newPuzzle;
     });
   };
 
   const onFocusCell = (index: number) => {
-    if (!puzzle) return;
-
-    const selectedX = index % 9;
-    const selectedY = Math.floor(index / 9);
-    const selectedSubgrid = getSubgrid(index);
-
-    const newPuzzle = puzzle?.map((cell, i) => {
-      if (i === index) {
-        return {
-          ...cell,
-          selected: true,
-          highlighted: true,
-          hasConflict: false,
-        };
-      }
-
-      const x = i % 9;
-      const y = Math.floor(i / 9);
-      const subgrid = cell.subgrid;
-      const highlighted =
-        x === selectedX || y === selectedY || subgrid === selectedSubgrid; // TODO: Fix repeated code
-
-      let hasConflict = false;
-      if (highlighted) {
-        const value = cell.value;
-        if (value) {
-          hasConflict = value === puzzle[index].value;
-        }
-      }
-
-      return { ...cell, selected: false, highlighted, hasConflict };
-    });
-    setPuzzle(newPuzzle);
+    setSelectedIndex(index);
   };
 
-  const onBlurCell = (index: number) => {
-    if (!puzzle) return;
-    const newPuzzle = puzzle?.map((cell, i) =>
-      i === index
-        ? { ...cell, selected: false, highlighted: false, hasConflict: false }
-        : { ...cell, highlighted: false, hasConflict: false }
-    );
-    setPuzzle(newPuzzle);
+  const onBlurCell = () => {
+    setSelectedIndex(null);
   };
 
   const toggleShowConflicts = () => {
     setShowConflicts((prev) => !prev);
   };
 
-  const result = puzzle ? evaluate(puzzle) : null;
+  const gameStatus = evaluateGame(puzzle); // TODO: useMemo
+  const cells = evaluateCells(puzzle, gameStatus, selectedIndex); // TODO: useMemo
 
   return {
     id,
-    puzzle,
+    cells,
+    // puzzle,
     restart,
     onFocusCell,
     onChangeCell,
     onBlurCell,
     newGame,
-    result,
+    status: gameStatus,
     toggleShowConflicts,
     showConflicts,
   };
@@ -171,55 +115,88 @@ const parsePuzzleString = (puzzle: string): Puzzle => {
     const isEmpty = cell === ".";
     const type = isEmpty ? "empty" : "prefilled";
     const value = isEmpty ? null : parseInt(cell);
-    const x = index % 9;
-    const y = Math.floor(index / 9);
-    const subgrid = getSubgrid(index);
-    return { type, value, x, y, subgrid };
+    return {
+      index,
+      type,
+      value,
+    };
   });
 };
 
-const evaluate = (puzzle: Puzzle): Boolean => {
-  // TODO: Optimize this function?
-  // TODO: Add error messages
+const evaluateGame = (puzzle: Puzzle | null): GameStatus => {
+  if (!puzzle) return { isComplete: false };
 
-  const isValid = puzzle.every(
-    ({ value }) => value && Number.isInteger(value) && value >= 1 && value <= 9
+  const emptySet = new Set(
+    puzzle.filter(({ value }) => !value).map(({ index }) => index)
   );
-  if (!isValid) return false;
 
-  const gameMatrix = new Array(9).fill(0).map(() => new Array(9).fill(0));
+  const conflictMap: Map<number, number[]> = new Map();
+
   puzzle.forEach((cell, index) => {
-    const row = Math.floor(index / 9);
-    const col = index % 9;
-    gameMatrix[row][col] = cell.value;
-  });
-
-  gameMatrix.forEach((row, y) => {
-    // Check row
-    if (new Set(row).size !== 9) return false;
-
-    // Check column
-    row.forEach((_, x) => {
-      if (new Set(gameMatrix.map((row) => row[x])).size !== 9) return false;
+    if (!cell.value) return;
+    const relevantIndexes = RELATED_INDEX_MAP[index];
+    const conflicts = Array.from(relevantIndexes).filter((relatedIndex) => {
+      return puzzle[relatedIndex].value === cell.value;
     });
+    if (conflicts.length > 0) {
+      conflictMap.set(index, conflicts);
+    }
   });
 
-  // Check 3x3
-  for (let y = 0; y < 9; y += 3) {
-    for (let x = 0; x < 9; x += 3) {
-      const row1 = gameMatrix[y].slice(x, x + 3);
-      const row2 = gameMatrix[y + 1].slice(x, x + 3);
-      const row3 = gameMatrix[y + 2].slice(x, x + 3);
-      const sectionSet = new Set([...row1, ...row2, ...row3]);
-      if (sectionSet.size !== 9) return false;
+  const isComplete = emptySet.size === 0 && conflictMap.size === 0;
+
+  return {
+    conflictMap,
+    emptySet,
+    isComplete,
+  };
+};
+
+const evaluateCells = (
+  puzzle: Puzzle,
+  gameStatus: GameStatus,
+  selectedIndex: number | null
+): Puzzle => {
+  if (!puzzle) return null;
+
+  const relevantIndexes =
+    selectedIndex === null ? [] : RELATED_INDEX_MAP[selectedIndex];
+
+  const cells = puzzle.map((cell, index): Cell => {
+    const isSelected = index === selectedIndex;
+    const isHighlighted = Array.from(relevantIndexes).includes(index);
+    const hasConflictWithSelected = gameStatus.conflictMap?.has(index) ?? false;
+    return {
+      ...cell,
+      status: {
+        isSelected,
+        isHighlighted,
+        hasConflictWithSelected,
+      },
+    };
+  });
+
+  return cells;
+};
+
+const getRelatedIndexMap = (): number[][] => {
+  const indexSet = new Array(81).fill(null).map(() => new Set<number>());
+  for (let i = 0; i < 81; i++) {
+    const x = i % 9;
+    const y = Math.floor(i / 9);
+    const subgrid = Math.floor(y / 3) * 3 + Math.floor(x / 3);
+    for (let j = i + 1; j < 81; j++) {
+      const x2 = j % 9;
+      const y2 = Math.floor(j / 9);
+      const subgrid2 = Math.floor(y2 / 3) * 3 + Math.floor(x2 / 3);
+      if (x === x2 || y === y2 || subgrid === subgrid2) {
+        indexSet[i].add(j);
+        indexSet[j].add(i);
+      }
     }
   }
-
-  return true;
+  const indexArray = indexSet.map((set) => Array.from(set));
+  return indexArray;
 };
 
-const getSubgrid = (index: number): number => {
-  const x = index % 9;
-  const y = Math.floor(index / 9);
-  return Math.floor(y / 3) * 3 + Math.floor(x / 3);
-};
+const RELATED_INDEX_MAP: number[][] = getRelatedIndexMap();

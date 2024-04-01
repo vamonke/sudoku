@@ -5,13 +5,13 @@ import { Cell, Puzzle } from "@/types";
 
 export default function Home() {
   const {
-    puzzle,
+    cells,
     onFocusCell,
     onChangeCell,
     onBlurCell,
     restart,
     newGame,
-    result,
+    status: { isComplete },
     toggleShowConflicts,
     showConflicts,
   } = useGame();
@@ -21,7 +21,7 @@ export default function Home() {
       <div className="p-4">
         <h1 className="text-xl text-center">SUDOKU</h1>
         <div className="flex flex-row gap-4 mt-2 justify-center items-center">
-          <div>{result ? "Completed" : "Not completed"}</div>
+          <div>{isComplete ? "Completed" : "Not completed"}</div>
           <button onClick={restart}>Restart</button>
           <button onClick={newGame}>New Game</button>
           <button onClick={toggleShowConflicts}>
@@ -31,9 +31,9 @@ export default function Home() {
       </div>
       <div className="grow flex flex-col justify-center items-center pb-8">
         <div className="aspect-square" style={{ height: 512, width: 512 }}>
-          {puzzle ? (
+          {cells ? (
             <Grid
-              puzzle={puzzle}
+              cells={cells}
               onFocusCell={onFocusCell}
               onChangeCell={onChangeCell}
               onBlurCell={onBlurCell}
@@ -54,17 +54,16 @@ export default function Home() {
 }
 
 function Grid(props: {
-  puzzle: Puzzle;
+  cells: Cell[];
   onChangeCell: (index: number, value: number | null) => void;
   onFocusCell: (index: number) => void;
   onBlurCell: (index: number) => void;
   showConflicts: boolean;
 }) {
-  const { puzzle, onFocusCell, onChangeCell, onBlurCell, showConflicts } =
-    props;
+  const { cells, onFocusCell, onChangeCell, onBlurCell, showConflicts } = props;
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
-      {puzzle.map((cell, index) => (
+      {cells.map((cell, index) => (
         <Cell
           index={index}
           key={index}
@@ -87,7 +86,7 @@ const EmptyGrid = () => {
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
       {cells.map((cell, index) => (
-        <Cell index={index} key={index} cell={cell} />
+        <Cell index={index} key={index} />
       ))}
     </div>
   );
@@ -95,20 +94,16 @@ const EmptyGrid = () => {
 
 function Cell(props: {
   index: number;
-  cell: Cell;
+  cell?: Cell;
   showConflict?: boolean;
   onChangeCell?: (index: number, value: number | null) => void;
   onFocusCell?: (index: number) => void;
   onBlurCell?: (index: number) => void;
 }) {
-  const {
-    cell: { value, type, selected, highlighted, hasConflict },
-    index,
-    onChangeCell,
-    onFocusCell,
-    onBlurCell,
-    showConflict,
-  } = props;
+  const { cell, index, onChangeCell, onFocusCell, onBlurCell, showConflict } =
+    props;
+  const { value, type, status } = cell ?? {};
+  const { isSelected, isHighlighted, hasConflictWithSelected } = status ?? {};
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (/^ArrowUp|ArrowDown|ArrowLeft|ArrowRight$/.test(e.key)) {
@@ -160,13 +155,14 @@ function Cell(props: {
   };
 
   const uneditable = type === "prefilled";
-  const hasConflictClass = hasConflict && showConflict;
+  const hasConflictClass = hasConflictWithSelected && showConflict;
 
   return (
     <input
       className={`bg-gray-200 flex items-center justify-center text-center
-      ${highlighted ? (selected ? "bg-blue-200" : "bg-blue-100") : ""}
-      ${hasConflictClass ? "bg-red-200" : ""}
+      ${isSelected && "bg-blue-200"}
+      ${isHighlighted && "bg-blue-100"}
+      ${hasConflictClass && "bg-red-200"}
       ${uneditable && "select-none"}
       `}
       value={value ?? ""}

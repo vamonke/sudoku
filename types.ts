@@ -1,11 +1,20 @@
 export type Cell = {
-  type: string;
+  index: number; // Can remove this?
+  type: "prefilled" | "empty";
   value: number | null;
-  selected?: boolean;
-  highlighted?: boolean;
-  x?: number;
-  y?: number;
-  subgrid?: number;
-  hasConflict?: boolean;
+  status?: CellStatus;
 };
-export type Puzzle = Cell[];
+
+export type CellStatus = {
+  isSelected: boolean;
+  isHighlighted: boolean;
+  hasConflictWithSelected: boolean;
+};
+
+export type Puzzle = Cell[] | null;
+
+export type GameStatus = {
+  conflictMap?: Map<number, number[]>;
+  emptySet?: Set<number>;
+  isComplete: boolean;
+};
