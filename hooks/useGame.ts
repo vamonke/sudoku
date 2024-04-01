@@ -5,6 +5,7 @@ import { Puzzle } from "@/types";
 export function useGame() {
   const [id, setId] = useState<string | null>(null);
   const [puzzle, setPuzzle] = useState<Puzzle | null>(null); // TODO: useReducer?
+  const [showConflicts, setShowConflicts] = useState<boolean>(true);
   // TODO: Add loading state
 
   const onLoad = useCallback(async () => {
@@ -145,6 +146,10 @@ export function useGame() {
     setPuzzle(newPuzzle);
   };
 
+  const toggleShowConflicts = () => {
+    setShowConflicts((prev) => !prev);
+  };
+
   const result = puzzle ? evaluate(puzzle) : null;
 
   return {
@@ -156,6 +161,8 @@ export function useGame() {
     onBlurCell,
     newGame,
     result,
+    toggleShowConflicts,
+    showConflicts,
   };
 }
 

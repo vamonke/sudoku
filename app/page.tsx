@@ -12,6 +12,8 @@ export default function Home() {
     restart,
     newGame,
     result,
+    toggleShowConflicts,
+    showConflicts,
   } = useGame();
 
   return (
@@ -22,6 +24,9 @@ export default function Home() {
           <div>{result ? "Completed" : "Not completed"}</div>
           <button onClick={restart}>Restart</button>
           <button onClick={newGame}>New Game</button>
+          <button onClick={toggleShowConflicts}>
+            {showConflicts ? "Hide Conflicts" : "Show Conflicts"}
+          </button>
         </div>
       </div>
       <div className="grow flex flex-col justify-center items-center pb-8">
@@ -32,6 +37,7 @@ export default function Home() {
               onFocusCell={onFocusCell}
               onChangeCell={onChangeCell}
               onBlurCell={onBlurCell}
+              showConflicts={showConflicts}
             />
           ) : (
             <EmptyGrid />
@@ -52,8 +58,10 @@ function Grid(props: {
   onChangeCell: (index: number, value: number | null) => void;
   onFocusCell: (index: number) => void;
   onBlurCell: (index: number) => void;
+  showConflicts: boolean;
 }) {
-  const { puzzle, onFocusCell, onChangeCell, onBlurCell } = props;
+  const { puzzle, onFocusCell, onChangeCell, onBlurCell, showConflicts } =
+    props;
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
       {puzzle.map((cell, index) => (
@@ -64,6 +72,7 @@ function Grid(props: {
           onFocusCell={onFocusCell}
           onChangeCell={onChangeCell}
           onBlurCell={onBlurCell}
+          showConflict={showConflicts}
         />
       ))}
     </div>
@@ -87,7 +96,7 @@ const EmptyGrid = () => {
 function Cell(props: {
   index: number;
   cell: Cell;
-
+  showConflict?: boolean;
   onChangeCell?: (index: number, value: number | null) => void;
   onFocusCell?: (index: number) => void;
   onBlurCell?: (index: number) => void;
@@ -98,6 +107,7 @@ function Cell(props: {
     onChangeCell,
     onFocusCell,
     onBlurCell,
+    showConflict,
   } = props;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -150,12 +160,13 @@ function Cell(props: {
   };
 
   const uneditable = type === "prefilled";
+  const hasConflictClass = hasConflict && showConflict;
 
   return (
     <input
       className={`bg-gray-200 flex items-center justify-center text-center
       ${highlighted ? (selected ? "bg-blue-200" : "bg-blue-100") : ""}
-      ${hasConflict ? "bg-red-200" : ""}
+      ${hasConflictClass ? "bg-red-200" : ""}
       ${uneditable && "select-none"}
       `}
       value={value ?? ""}
