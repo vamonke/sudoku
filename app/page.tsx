@@ -12,6 +12,7 @@ export default function Home() {
     onBlurCell,
     restart,
     newGame,
+    undo,
     status: { isComplete },
     toggleShowConflicts,
     showConflicts,
@@ -22,11 +23,11 @@ export default function Home() {
       <div className="p-4">
         <h1 className="text-xl text-center">SUDOKU</h1>
         <div className="flex flex-row gap-4 mt-2 justify-center items-center">
-          <div>{isComplete ? "Completed" : "Not completed"}</div>
-          <button onClick={restart}>Restart</button>
-          <button onClick={newGame}>New Game</button>
+          <button onClick={restart}>Restart (R)</button>
+          <button onClick={newGame}>New Game (N)</button>
+          <button onClick={undo}>Undo (Z)</button>
           <button onClick={toggleShowConflicts}>
-            {showConflicts ? "Hide Conflicts" : "Show Conflicts"}
+            {showConflicts ? "Hide Hints (H)" : "Show Hints (H)"}
           </button>
         </div>
       </div>

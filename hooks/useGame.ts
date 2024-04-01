@@ -9,6 +9,8 @@ export function useGame() {
   const [showConflicts, setShowConflicts] = useState<boolean>(true);
   // TODO: Add loading state
 
+  const undo = () => {};
+
   const onLoad = useCallback(async () => {
     const supabase = createClient();
     const { data } = await supabase.rpc("get_random_puzzle");
@@ -45,6 +47,8 @@ export function useGame() {
       console.log("KeyUp:", event.key);
       if (event.key === "r") restart(); // TODO: Add confirmation
       if (event.key === "n") newGame(); // TODO: Add confirmation
+      if (event.key === "h") toggleShowConflicts(); // TODO: Add confirmation
+      if (event.key === "z") undo();
     };
 
     window.addEventListener("keyup", eventListener);
@@ -100,10 +104,11 @@ export function useGame() {
     cells,
     // puzzle,
     restart,
+    undo,
+    newGame,
     onFocusCell,
     onChangeCell,
     onBlurCell,
-    newGame,
     status: gameStatus,
     toggleShowConflicts,
     showConflicts,
