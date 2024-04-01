@@ -82,6 +82,7 @@ const EmptyGrid = () => {
 function Cell(props: {
   index: number;
   cell: Cell;
+
   onChangeCell?: (index: number, value: number | null) => void;
   onFocusCell?: (index: number) => void;
   onBlurCell?: (index: number) => void;
@@ -95,8 +96,30 @@ function Cell(props: {
   } = props;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const regex = /^[1-9]|Backspace|Tab$/;
-    if (!regex.test(e.key)) {
+    if (/^ArrowUp|ArrowDown|ArrowLeft|ArrowRight$/.test(e.key)) {
+      let nextIndex = null;
+      switch (e.key) {
+        case "ArrowLeft":
+          nextIndex = index - 1;
+          break;
+        case "ArrowRight":
+          nextIndex = index + 1;
+          break;
+        case "ArrowUp":
+          nextIndex = index - 9;
+          break;
+        case "ArrowDown":
+          nextIndex = index + 9;
+          break;
+      }
+      if (nextIndex !== null && nextIndex >= 0 && nextIndex < 81) {
+        const nextCell = document.querySelector(
+          `input:nth-child(${nextIndex + 1})`
+        ); // Is there a better way to do this?
+        if (nextCell) (nextCell as HTMLElement).focus();
+      }
+    }
+    if (!/^[1-9]|Backspace|Tab$/.test(e.key)) {
       e.preventDefault();
     }
   };
@@ -132,7 +155,6 @@ function Cell(props: {
       onKeyDown={handleKeyDown}
       onChange={handleChange}
       readOnly={uneditable}
-      disabled={uneditable}
       type="number"
       min={1}
       max={9}
