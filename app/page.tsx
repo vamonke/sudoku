@@ -3,36 +3,54 @@
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 
+// TODO: Move to a types file
+type Puzzle = { type: string; value: number | null }[];
+type Game = {
+  id?: string;
+  puzzle: Puzzle;
+};
+
+// TODO: Move to a constants file
+const initialGame = {
+  puzzle: new Array(81).fill({ type: "empty", value: null }),
+};
+
 export default function Home() {
-  const [game, setGame] = useState(
-    new Array(81).fill({ type: "empty", value: null })
-  );
+  // TODO: Move to a context or reducer
+  const [game, setGame] = useState<Game>(initialGame);
 
   useEffect(() => {
     fetchPuzzle();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const result = evaluate(game);
+  const result = evaluate(game.puzzle);
 
   const fetchPuzzle = async () => {
+    console.log("fetching puzzle");
     const supabase = createClient();
-    const { data } = await supabase
-      .from("sudoku_puzzles")
-      .select()
-      .eq("id", "c0bcd6f3-8406-4bb6-a11e-e043866f62a1") // TODO: Randomize puzzle
-      .limit(1)
-      .maybeSingle();
-    const puzzle = parsePuzzleString(data?.puzzle);
-    setGame(puzzle);
+    const { data } = await supabase.rpc("get_random_puzzle", {
+      pid: game.id ?? null,
+    });
+
+    if (!data) return;
+    // TODO: Handle error
+
+    const puzzle = parsePuzzleString(data.puzzle);
+    if (puzzle) {
+      setGame({
+        id: data.id as string,
+        puzzle,
+      });
+    }
   };
 
   const restart = () => {
     setGame((prevGame) => {
-      const newGame = prevGame.map((cell) => {
+      const newPuzzle = prevGame.puzzle.map((cell) => {
         if (cell.type === "prefilled") return cell;
         return { ...cell, value: null };
       });
-      return newGame;
+      return { ...prevGame, puzzle: newPuzzle };
     });
   };
 
@@ -43,6 +61,7 @@ export default function Home() {
         <div className="flex flex-row gap-4 justify-center items-center">
           <div>{result ? "Completed" : "Not completed"}</div>
           <button onClick={restart}>Restart</button>
+          <button onClick={fetchPuzzle}>New Game</button>
         </div>
       </div>
       <div className="grow flex flex-col justify-center items-center pb-8">
@@ -66,24 +85,22 @@ const parsePuzzleString = (
 };
 
 function Grid(props: {
-  game: { type: string; value: number | null }[];
-  setGame: React.Dispatch<
-    React.SetStateAction<{ type: string; value: number | null }[]>
-  >;
+  game: Game;
+  setGame: React.Dispatch<React.SetStateAction<Game>>;
 }) {
   const { game, setGame } = props;
 
   const onChange = (index: number, value: number | null) => {
     setGame((prevGame) => {
-      const newGame = [...prevGame];
-      newGame[index] = { ...newGame[index], value };
-      return newGame;
+      const newPuzzle = [...prevGame.puzzle];
+      newPuzzle[index] = { ...newPuzzle[index], value };
+      return { ...prevGame, puzzle: newPuzzle };
     });
   };
 
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
-      {game.map(({ value, type }, index) => (
+      {game.puzzle.map(({ value, type }, index) => (
         <Cell
           index={index}
           key={index}
@@ -136,17 +153,17 @@ function Cell(props: {
   );
 }
 
-const evaluate = (game: { type: string; value: number | null }[]) => {
+const evaluate = (puzzle: Puzzle) => {
   // TODO: Optimize this function?
   // TODO: Add error messages
 
-  const isValid = game.every(
+  const isValid = puzzle.every(
     ({ value }) => value && Number.isInteger(value) && value >= 1 && value <= 9
   );
   if (!isValid) return false;
 
   const gameMatrix = new Array(9).fill(0).map(() => new Array(9).fill(0));
-  game.forEach((cell, index) => {
+  puzzle.forEach((cell, index) => {
     const row = Math.floor(index / 9);
     const col = index % 9;
     gameMatrix[row][col] = cell.value;
