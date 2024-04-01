@@ -95,7 +95,7 @@ function Cell(props: {
   } = props;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const regex = /^[1-9]|Backspace|ArrowUp|ArrowDown$/;
+    const regex = /^[1-9]|Backspace|Tab$/;
     if (!regex.test(e.key)) {
       e.preventDefault();
     }
@@ -119,16 +119,20 @@ function Cell(props: {
     onBlurCell?.(index);
   };
 
+  const uneditable = type === "prefilled";
+
   return (
     <input
-      className={`bg-gray-200 flex items-center justify-center text-center  ${
-        highlighted ? (selected ? "bg-blue-200" : "bg-blue-100") : ""
-      }
-      ${hasConflict ? "bg-red-200" : ""}`}
+      className={`bg-gray-200 flex items-center justify-center text-center
+      ${highlighted ? (selected ? "bg-blue-200" : "bg-blue-100") : ""}
+      ${hasConflict ? "bg-red-200" : ""}
+      ${uneditable && "select-none"}
+      `}
       value={value ?? ""}
       onKeyDown={handleKeyDown}
       onChange={handleChange}
-      readOnly={type === "prefilled"}
+      readOnly={uneditable}
+      disabled={uneditable}
       type="number"
       min={1}
       max={9}
