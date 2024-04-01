@@ -7,7 +7,6 @@ export function useGame() {
   const [puzzle, setPuzzle] = useState<Puzzle | null>(null); // TODO: useReducer?
   // TODO: Add loading state
   // TODO: Add conflicts state
-  // TODO: Add selected cell state
 
   useEffect(() => {
     fetchPuzzle();
@@ -40,7 +39,7 @@ export function useGame() {
     });
   };
 
-  const editCell = (index: number, value: number | null) => {
+  const onChangeCell = (index: number, value: number | null) => {
     setPuzzle((prevPuzzle) => {
       if (!prevPuzzle) return null;
       const newPuzzle = prevPuzzle.map((cell, i) =>
@@ -54,9 +53,34 @@ export function useGame() {
     await fetchPuzzle();
   };
 
+  const onFocusCell = (index: number) => {
+    if (!puzzle) return;
+    const newPuzzle = puzzle?.map((cell, i) =>
+      i === index ? { ...cell, selected: true } : { ...cell, selected: false }
+    );
+    setPuzzle(newPuzzle);
+  };
+
+  const onBlurCell = (index: number) => {
+    if (!puzzle) return;
+    const newPuzzle = puzzle?.map((cell, i) =>
+      i === index ? { ...cell, selected: false } : cell
+    );
+    setPuzzle(newPuzzle);
+  };
+
   const result = puzzle ? evaluate(puzzle) : null;
 
-  return { id, puzzle, restart, editCell, newGame, result };
+  return {
+    id,
+    puzzle,
+    restart,
+    onFocusCell,
+    onChangeCell,
+    onBlurCell,
+    newGame,
+    result,
+  };
 }
 
 const parsePuzzleString = (puzzle: string): Puzzle => {

@@ -1,10 +1,19 @@
 "use client";
 
 import { useGame } from "@/hooks/useGame";
-import { Puzzle } from "@/types";
+import { Cell, Puzzle } from "@/types";
 
 export default function Home() {
-  const { puzzle, editCell, restart, newGame, result } = useGame();
+  const {
+    puzzle,
+    onFocusCell,
+    onChangeCell,
+    onBlurCell,
+    restart,
+    newGame,
+    result,
+  } = useGame();
+
   return (
     <main className="flex flex-col h-full">
       <div className="p-4">
@@ -18,7 +27,12 @@ export default function Home() {
       <div className="grow flex flex-col justify-center items-center pb-8">
         <div className="aspect-square" style={{ height: 512, width: 512 }}>
           {puzzle ? (
-            <Grid puzzle={puzzle} editCell={editCell} />
+            <Grid
+              puzzle={puzzle}
+              onFocusCell={onFocusCell}
+              onChangeCell={onChangeCell}
+              onBlurCell={onBlurCell}
+            />
           ) : (
             <EmptyGrid />
           )}
@@ -30,18 +44,21 @@ export default function Home() {
 
 function Grid(props: {
   puzzle: Puzzle;
-  editCell: (index: number, value: number | null) => void;
+  onChangeCell: (index: number, value: number | null) => void;
+  onFocusCell: (index: number) => void;
+  onBlurCell: (index: number) => void;
 }) {
-  const { puzzle, editCell } = props;
+  const { puzzle, onFocusCell, onChangeCell, onBlurCell } = props;
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
-      {puzzle.map(({ value, type }, index) => (
+      {puzzle.map((cell, index) => (
         <Cell
           index={index}
           key={index}
-          type={type}
-          value={value}
-          editCell={editCell}
+          cell={cell}
+          onFocusCell={onFocusCell}
+          onChangeCell={onChangeCell}
+          onBlurCell={onBlurCell}
         />
       ))}
     </div>
@@ -55,8 +72,8 @@ const EmptyGrid = () => {
   }));
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
-      {cells.map(({ value, type }, index) => (
-        <Cell index={index} key={index} type={type} value={value} />
+      {cells.map((cell, index) => (
+        <Cell index={index} key={index} cell={cell} />
       ))}
     </div>
   );
@@ -64,11 +81,18 @@ const EmptyGrid = () => {
 
 function Cell(props: {
   index: number;
-  type: string;
-  value: number | null;
-  editCell?: (index: number, value: number | null) => void;
+  cell: Cell;
+  onChangeCell?: (index: number, value: number | null) => void;
+  onFocusCell?: (index: number) => void;
+  onBlurCell?: (index: number) => void;
 }) {
-  const { value, type, index, editCell } = props;
+  const {
+    cell: { value, type, selected },
+    index,
+    onChangeCell,
+    onFocusCell,
+    onBlurCell,
+  } = props;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const regex = /^[1-9]|Backspace|ArrowUp|ArrowDown$/;
@@ -80,16 +104,26 @@ function Cell(props: {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === "") {
-      editCell?.(index, null);
+      onChangeCell?.(index, null);
     } else {
       const parsedInt = parseInt(value[value.length - 1]);
-      editCell?.(index, parsedInt);
+      onChangeCell?.(index, parsedInt);
     }
+  };
+
+  const onFocus = () => {
+    onFocusCell?.(index);
+  };
+
+  const onBlur = () => {
+    onBlurCell?.(index);
   };
 
   return (
     <input
-      className="bg-gray-200 flex items-center justify-center text-center"
+      className={`bg-gray-200 flex items-center justify-center text-center ${
+        selected ? "bg-blue-200" : ""
+      }`}
       value={value ?? ""}
       onKeyDown={handleKeyDown}
       onChange={handleChange}
@@ -98,6 +132,8 @@ function Cell(props: {
       min={1}
       max={9}
       step={1}
+      onFocus={onFocus}
+      onBlur={onBlur}
     />
   );
 }
