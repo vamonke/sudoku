@@ -1,7 +1,7 @@
 "use client";
 
 import { useGame } from "@/hooks/useGame";
-import { Cell, Puzzle } from "@/types";
+import { Cell } from "@/types";
 import classNames from "classnames";
 
 export default function Home() {
@@ -39,6 +39,7 @@ export default function Home() {
               onChangeCell={onChangeCell}
               onBlurCell={onBlurCell}
               showConflicts={showConflicts}
+              isComplete={isComplete}
             />
           ) : (
             <EmptyGrid />
@@ -60,12 +61,21 @@ function Grid(props: {
   onFocusCell: (index: number) => void;
   onBlurCell: (index: number) => void;
   showConflicts: boolean;
+  isComplete: boolean;
 }) {
-  const { cells, onFocusCell, onChangeCell, onBlurCell, showConflicts } = props;
+  const {
+    cells,
+    onFocusCell,
+    onChangeCell,
+    onBlurCell,
+    showConflicts,
+    isComplete,
+  } = props;
   return (
     <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
       {cells.map((cell, index) => (
         <Cell
+          isComplete={isComplete}
           index={index}
           key={index}
           cell={cell}
@@ -100,9 +110,17 @@ function Cell(props: {
   onChangeCell?: (index: number, value: number | null) => void;
   onFocusCell?: (index: number) => void;
   onBlurCell?: (index: number) => void;
+  isComplete?: boolean;
 }) {
-  const { cell, index, onChangeCell, onFocusCell, onBlurCell, showConflict } =
-    props;
+  const {
+    cell,
+    index,
+    onChangeCell,
+    onFocusCell,
+    onBlurCell,
+    showConflict,
+    isComplete,
+  } = props;
   const { value, type, status } = cell ?? {};
   const { isSelected, isHighlighted, hasConflictWithSelected } = status ?? {};
 
@@ -164,7 +182,8 @@ function Cell(props: {
     isHighlighted && "bg-blue-100",
     hasConflictClass && "bg-red-100",
     uneditable && "select-none",
-    !uneditable && "text-gray-400"
+    !uneditable && "text-gray-400",
+    isComplete && "bg-green-100"
   );
 
   return (
