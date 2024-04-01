@@ -103,18 +103,20 @@ function Cell(props: {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (/^ArrowUp|ArrowDown|ArrowLeft|ArrowRight$/.test(e.key)) {
       let nextIndex = null;
+      const x = index % 9;
+      const y = Math.floor(index / 9);
       switch (e.key) {
         case "ArrowLeft":
-          nextIndex = index - 1;
+          nextIndex = x === 0 ? index + 8 : index - 1;
           break;
         case "ArrowRight":
-          nextIndex = index + 1;
+          nextIndex = x === 8 ? index - 8 : index + 1;
           break;
         case "ArrowUp":
-          nextIndex = index - 9;
+          nextIndex = y === 0 ? index + 72 : index - 9;
           break;
         case "ArrowDown":
-          nextIndex = index + 9;
+          nextIndex = y === 8 ? index - 72 : index + 9;
           break;
       }
       if (nextIndex !== null && nextIndex >= 0 && nextIndex < 81) {
