@@ -55,16 +55,29 @@ export function useGame() {
 
   const onFocusCell = (index: number) => {
     if (!puzzle) return;
-    const newPuzzle = puzzle?.map((cell, i) =>
-      i === index ? { ...cell, selected: true } : { ...cell, selected: false }
-    );
+
+    const selectedX = index % 9;
+    const selectedY = Math.floor(index / 9);
+    const selectedSubgrid = getSubgrid(index);
+
+    const newPuzzle = puzzle?.map((cell, i) => {
+      if (i === index) return { ...cell, selected: true, highlighted: true };
+      const x = i % 9;
+      const y = Math.floor(i / 9);
+      const subgrid = cell.subgrid;
+      const highlighted =
+        x === selectedX || y === selectedY || subgrid === selectedSubgrid;
+      return { ...cell, selected: false, highlighted };
+    });
     setPuzzle(newPuzzle);
   };
 
   const onBlurCell = (index: number) => {
     if (!puzzle) return;
     const newPuzzle = puzzle?.map((cell, i) =>
-      i === index ? { ...cell, selected: false } : cell
+      i === index
+        ? { ...cell, selected: false, highlighted: false }
+        : { ...cell, highlighted: false }
     );
     setPuzzle(newPuzzle);
   };
@@ -84,11 +97,14 @@ export function useGame() {
 }
 
 const parsePuzzleString = (puzzle: string): Puzzle => {
-  return puzzle.split("").map((cell) => {
+  return puzzle.split("").map((cell, index) => {
     const isEmpty = cell === ".";
     const type = isEmpty ? "empty" : "prefilled";
     const value = isEmpty ? null : parseInt(cell);
-    return { type, value };
+    const x = index % 9;
+    const y = Math.floor(index / 9);
+    const subgrid = getSubgrid(index);
+    return { type, value, x, y, subgrid };
   });
 };
 
@@ -130,4 +146,10 @@ const evaluate = (puzzle: Puzzle): Boolean => {
   }
 
   return true;
+};
+
+const getSubgrid = (index: number): number => {
+  const x = index % 9;
+  const y = Math.floor(index / 9);
+  return Math.floor(y / 3) * 3 + Math.floor(x / 3);
 };

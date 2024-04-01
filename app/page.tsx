@@ -87,7 +87,7 @@ function Cell(props: {
   onBlurCell?: (index: number) => void;
 }) {
   const {
-    cell: { value, type, selected },
+    cell: { value, type, selected, highlighted },
     index,
     onChangeCell,
     onFocusCell,
@@ -123,7 +123,7 @@ function Cell(props: {
     <input
       className={`bg-gray-200 flex items-center justify-center text-center ${
         selected ? "bg-blue-200" : ""
-      }`}
+      } ${highlighted ? "bg-blue-100" : ""}`}
       value={value ?? ""}
       onKeyDown={handleKeyDown}
       onChange={handleChange}
