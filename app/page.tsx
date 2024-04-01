@@ -2,6 +2,7 @@
 
 import { useGame } from "@/hooks/useGame";
 import { Cell, Puzzle } from "@/types";
+import classNames from "classnames";
 
 export default function Home() {
   const {
@@ -157,14 +158,18 @@ function Cell(props: {
   const uneditable = type === "prefilled";
   const hasConflictClass = hasConflictWithSelected && showConflict;
 
+  const className = classNames(
+    "bg-gray-200 flex items-center justify-center text-center",
+    isSelected && "bg-blue-200",
+    isHighlighted && "bg-blue-100",
+    hasConflictClass && "bg-red-100",
+    uneditable && "select-none",
+    !uneditable && "text-gray-400"
+  );
+
   return (
     <input
-      className={`bg-gray-200 flex items-center justify-center text-center
-      ${isSelected && "bg-blue-200"}
-      ${isHighlighted && "bg-blue-100"}
-      ${hasConflictClass && "bg-red-200"}
-      ${uneditable && "select-none"}
-      `}
+      className={className}
       value={value ?? ""}
       onKeyDown={handleKeyDown}
       onChange={handleChange}
