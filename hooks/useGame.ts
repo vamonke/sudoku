@@ -42,9 +42,30 @@ export function useGame() {
   const onChangeCell = (index: number, value: number | null) => {
     setPuzzle((prevPuzzle) => {
       if (!prevPuzzle) return null;
-      const newPuzzle = prevPuzzle.map((cell, i) =>
-        i === index ? { ...cell, value } : cell
-      );
+      const newPuzzle = prevPuzzle.map((cell, i) => {
+        if (i === index) {
+          return { ...cell, value, hasConflict: false };
+        }
+
+        if (value === null) return { ...cell, hasConflict: false };
+
+        const selectedX = index % 9;
+        const selectedY = Math.floor(index / 9);
+        const selectedSubgrid = getSubgrid(index);
+
+        const x = i % 9;
+        const y = Math.floor(i / 9);
+        const subgrid = cell.subgrid;
+        const relatedCell =
+          x === selectedX || y === selectedY || subgrid === selectedSubgrid; // TODO: Fix repeated code
+
+        let hasConflict = false;
+        if (relatedCell && cell.value) {
+          hasConflict = cell.value === value;
+        }
+
+        return { ...cell, hasConflict };
+      });
       return newPuzzle;
     });
   };
@@ -61,13 +82,30 @@ export function useGame() {
     const selectedSubgrid = getSubgrid(index);
 
     const newPuzzle = puzzle?.map((cell, i) => {
-      if (i === index) return { ...cell, selected: true, highlighted: true };
+      if (i === index) {
+        return {
+          ...cell,
+          selected: true,
+          highlighted: true,
+          hasConflict: false,
+        };
+      }
+
       const x = i % 9;
       const y = Math.floor(i / 9);
       const subgrid = cell.subgrid;
       const highlighted =
-        x === selectedX || y === selectedY || subgrid === selectedSubgrid;
-      return { ...cell, selected: false, highlighted };
+        x === selectedX || y === selectedY || subgrid === selectedSubgrid; // TODO: Fix repeated code
+
+      let hasConflict = false;
+      if (highlighted) {
+        const value = cell.value;
+        if (value) {
+          hasConflict = value === puzzle[index].value;
+        }
+      }
+
+      return { ...cell, selected: false, highlighted, hasConflict };
     });
     setPuzzle(newPuzzle);
   };
@@ -76,8 +114,8 @@ export function useGame() {
     if (!puzzle) return;
     const newPuzzle = puzzle?.map((cell, i) =>
       i === index
-        ? { ...cell, selected: false, highlighted: false }
-        : { ...cell, highlighted: false }
+        ? { ...cell, selected: false, highlighted: false, hasConflict: false }
+        : { ...cell, highlighted: false, hasConflict: false }
     );
     setPuzzle(newPuzzle);
   };

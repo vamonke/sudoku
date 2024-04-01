@@ -6,5 +6,6 @@ export type Cell = {
   x?: number;
   y?: number;
   subgrid?: number;
+  hasConflict?: boolean;
 };
 export type Puzzle = Cell[];
