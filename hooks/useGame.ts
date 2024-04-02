@@ -16,6 +16,7 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
   });
 
   const newGame = useCallback(async () => {
+    console.log("New game", puzzleId);
     const supabase = createClient();
     const { data } = await supabase.rpc("get_random_puzzle", {
       pid: puzzleId,
@@ -29,7 +30,7 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
     }
   }, [puzzleId]);
 
-  const restart = () => {
+  const restart = useCallback(() => {
     console.log("Restart");
     setBoard((prevBoard) => {
       const newBoard = prevBoard.map((cell) => {
@@ -38,7 +39,7 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
       });
       return newBoard;
     });
-  };
+  }, []);
 
   const onChangeCell = (index: number, value: number | null) => {
     const newValue = value;
@@ -77,21 +78,6 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
     });
   }, [moves, board]);
 
-  useEffect(() => {
-    const eventListener = (event: KeyboardEvent) => {
-      console.log("KeyUp:", event.key);
-      if (event.key === "r") restart(); // TODO: Add confirmation
-      if (event.key === "n") newGame(); // TODO: Add confirmation
-      if (event.key === "h") toggleShowConflicts(); // TODO: Add confirmation
-      if (event.key === "z") undo();
-    };
-
-    window.addEventListener("keyup", eventListener);
-    return () => {
-      window.removeEventListener("keyup", eventListener);
-    };
-  }, [newGame, undo]);
-
   const onFocusCell = (index: number) => {
     setSelectedIndex(index);
   };
@@ -100,11 +86,9 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
     setSelectedIndex(null);
   };
 
-  const toggleShowConflicts = () => {
+  const toggleShowConflicts = useCallback(() => {
     setShowConflicts((prev) => !prev);
-  };
-
-  // const gameStatus = evaluateGame(board);
+  }, []);
 
   useEffect(() => {
     const gameStatus = evaluateGame(board);
@@ -178,7 +162,7 @@ const getCellStatus = (
   gameStatus: GameStatus,
   selectedIndex: number | null
 ): Board => {
-  console.log("Get highlights cells");
+  console.log("Get highlighted cells");
   const relevantIndexes =
     selectedIndex === null ? [] : RELATED_INDEX_MAP[selectedIndex];
   const cells = board.map((cell, index): Cell => {
