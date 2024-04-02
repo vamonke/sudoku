@@ -8,7 +8,6 @@ type Props = {
 
 export default function Controls(props: Props) {
   const { restart, newGame, undo, toggleShowConflicts, showConflicts } = props;
-
   return (
     <div className="flex flex-row gap-4 mt-2 justify-center items-center">
       <button onClick={restart}>Restart (R)</button>
