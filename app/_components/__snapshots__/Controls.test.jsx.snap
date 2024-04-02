@@ -5,17 +5,25 @@ exports[`Controls renders correctly 1`] = `
   <div
     class="flex flex-row gap-4 mt-2 justify-center items-center"
   >
-    <button>
+    <button
+      data-testid="restart"
+    >
       Restart (R)
     </button>
-    <button>
+    <button
+      data-testid="new"
+    >
       New Game (N)
     </button>
-    <button>
+    <button
+      data-testid="undo"
+    >
       Undo (Z)
     </button>
-    <button>
-      Show Hints (H)
+    <button
+      data-testid="toggle"
+    >
+      Show warnings (W)
     </button>
   </div>
 </div>
