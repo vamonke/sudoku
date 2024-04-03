@@ -1,0 +1,1159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game renders correctly when board is not null 1`] = `
+<div>
+  <main
+    class="flex flex-col h-full"
+  >
+    <div
+      class="p-4"
+    >
+      <h1
+        class="text-xl text-center"
+      >
+        SUDOKU
+      </h1>
+      <div
+        class="flex flex-row gap-4 mt-2 justify-center items-center"
+      >
+        <button
+          data-testid="restart"
+        >
+          Restart (R)
+        </button>
+        <button
+          data-testid="new"
+        >
+          New Game (N)
+        </button>
+        <button
+          data-testid="undo"
+        >
+          Undo (Z)
+        </button>
+        <button
+          data-testid="toggle"
+        >
+          Show warnings (W)
+        </button>
+      </div>
+    </div>
+    <div
+      class="grow flex flex-col justify-center items-center pb-8"
+    >
+      <div
+        class="aspect-square"
+        style="height: 512px; width: 512px;"
+      >
+        <div
+          class="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full"
+        >
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+          <div
+            class="bg-gray-200"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-row gap-4 justify-center items-center p-4"
+    >
+      <div>
+        Use arrow keys to navigate. Use numbers 1-9 to fill in the cells.
+      </div>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`Game renders correctly when board is null 1`] = `
+<div>
+  <main
+    class="flex flex-col h-full"
+  >
+    <div
+      class="p-4"
+    >
+      <h1
+        class="text-xl text-center"
+      >
+        SUDOKU
+      </h1>
+      <div
+        class="flex flex-row gap-4 mt-2 justify-center items-center"
+      >
+        <button
+          data-testid="restart"
+        >
+          Restart (R)
+        </button>
+        <button
+          data-testid="new"
+        >
+          New Game (N)
+        </button>
+        <button
+          data-testid="undo"
+        >
+          Undo (Z)
+        </button>
+        <button
+          data-testid="toggle"
+        >
+          Show warnings (W)
+        </button>
+      </div>
+    </div>
+    <div
+      class="grow flex flex-col justify-center items-center pb-8"
+    >
+      <div
+        class="aspect-square"
+        style="height: 512px; width: 512px;"
+      >
+        <div
+          class="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full"
+        >
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="7"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="9"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="5"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="9"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="5"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="7"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="5"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="9"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="7"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="9"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="5"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="5"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            step="1"
+            type="number"
+            value=""
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="3"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="1"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="8"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="9"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="6"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="7"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="5"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="2"
+          />
+          <input
+            class="flex items-center justify-center text-center select-none bg-gray-200"
+            data-testid="cell"
+            max="9"
+            min="1"
+            readonly=""
+            step="1"
+            type="number"
+            value="4"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-row gap-4 justify-center items-center p-4"
+    >
+      <div>
+        Use arrow keys to navigate. Use numbers 1-9 to fill in the cells.
+      </div>
+    </div>
+  </main>
+</div>
+`;

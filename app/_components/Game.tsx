@@ -1,5 +1,3 @@
-"use client";
-
 import { useGame } from "@/hooks/useGame";
 import { SudokuPuzzle } from "@/types";
 import Grid from "./Grid";
