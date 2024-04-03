@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useState } from "react";
+import { useCallback, useMemo, useReducer } from "react";
 import { Board, SudokuPuzzle } from "@/types";
 import { findConflict, parsePuzzleString } from "@/utils/puzzle";
 
@@ -8,7 +8,6 @@ export function useBoard(initialPuzzle: SudokuPuzzle) {
     initialPuzzle.puzzle,
     parsePuzzleString
   );
-  const [conflictSet, setConflictSet] = useState<Set<number>>(new Set());
 
   const setBoard = (value: Board) => {
     boardDispatch({ type: "setBoard", value });
@@ -22,11 +21,7 @@ export function useBoard(initialPuzzle: SudokuPuzzle) {
     boardDispatch({ type: "update", index, value });
   };
 
-  useEffect(() => {
-    const conflict = findConflict(board);
-    setConflictSet(conflict);
-  }, [board]);
-
+  const conflictSet = useMemo(() => findConflict(board), [board]);
   const isComplete =
     conflictSet.size === 0 && board.every((cell) => cell.value !== null);
 
