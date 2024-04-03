@@ -3,7 +3,7 @@ import { parsePuzzleString } from "@/utils/puzzle";
 import { useCallback, useState } from "react";
 import { useBoard } from "./useBoard";
 import { useMoves } from "./useMoves";
-import { supabaseClient } from "@/utils/supabase/client";
+import { fetchNewPuzzle } from "@/utils/supabase/puzzle";
 
 export function useGame(initialPuzzle: SudokuPuzzle) {
   const { board, setBoard, reset, updateCell, isComplete, conflictSet } =
@@ -50,15 +50,3 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
     toggleShowConflict,
   };
 }
-
-export const fetchNewPuzzle = async (puzzleId: string) => {
-  const { data, error } = await supabaseClient.rpc("get_random_puzzle", {
-    pid: puzzleId,
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  return data;
-};

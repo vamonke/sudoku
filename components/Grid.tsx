@@ -1,7 +1,7 @@
-import { RELATED_INDEX_MAP } from "@/hooks/useBoard";
 import { Board } from "@/types";
 import { useState } from "react";
 import GridCell from "./GridCell";
+import { RELATED_INDEX_MAP } from "@/utils/puzzle";
 
 type Props = {
   board: Board;

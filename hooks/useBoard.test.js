@@ -14,9 +14,7 @@ describe("useBoard", () => {
     const { result } = renderHook(useBoard, {
       initialProps: mockPuzzle,
     });
-    act(() => {
-      result.current.updateCell(9, 6);
-    });
+    act(() => result.current.updateCell(9, 6));
     expect(result.current.board[9].value).toBe(6);
   });
 
@@ -24,12 +22,8 @@ describe("useBoard", () => {
     const { result } = renderHook(useBoard, {
       initialProps: mockPuzzle,
     });
-    act(() => {
-      result.current.updateCell(9, 6);
-    });
-    act(() => {
-      result.current.reset();
-    });
+    act(() => result.current.updateCell(9, 6));
+    act(() => result.current.reset());
     expect(result.current.board).toStrictEqual(mockBoard);
   });
 
@@ -37,12 +31,8 @@ describe("useBoard", () => {
     const { result } = renderHook(useBoard, {
       initialProps: mockPuzzle,
     });
-    act(() => {
-      result.current.updateCell(9, 6);
-    });
-    act(() => {
-      result.current.setBoard(mockBoard2);
-    });
+    act(() => result.current.updateCell(9, 6));
+    act(() => result.current.setBoard(mockBoard2));
     expect(result.current.board).toStrictEqual(mockBoard2);
   });
 });
