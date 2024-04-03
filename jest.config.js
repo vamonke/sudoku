@@ -11,7 +11,8 @@ const config = {
   coverageProvider: "v8",
   testEnvironment: "jsdom",
   collectCoverageFrom: [
-    "app/_components/**/*.{js,jsx,ts,tsx}",
+    "components/**/*.{js,jsx,ts,tsx}",
+    "hooks/**/*.{js,jsx,ts,tsx}",
     "!**/coverage/**",
   ],
 };

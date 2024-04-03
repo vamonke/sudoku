@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
-import Game from "./_components/Game";
+import Game from "../components/Game";
 
 export default async function Home() {
   const cookieStore = cookies();
