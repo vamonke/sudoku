@@ -18,6 +18,8 @@ export default function Grid(props: Props) {
 
   const highlightedIndexes =
     selectedIndex === null ? [] : RELATED_INDEX_MAP.get(selectedIndex) ?? [];
+  const currentValue =
+    selectedIndex !== null ? board[selectedIndex].value : null;
 
   const onArrowKey = (index: number, key: string) => {
     let nextIndex = null;
@@ -47,6 +49,8 @@ export default function Grid(props: Props) {
       {board.map((cell, index) => {
         const isSelected = selectedIndex === index;
         const isHighlighted = highlightedIndexes.includes(index);
+        const isSameValue =
+          currentValue !== null && currentValue === cell.value;
         const hasConflict = showConflict && conflictSet.has(index);
         const onFocus = () => setSelectedIndex(index);
         const onBlur = () => setSelectedIndex(null);
@@ -61,6 +65,7 @@ export default function Grid(props: Props) {
             onFocus={onFocus}
             onBlur={onBlur}
             isHighlighted={isHighlighted}
+            isSameValue={isSameValue}
             hasConflict={hasConflict}
             onArrowKey={onArrowKey}
           />

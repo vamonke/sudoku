@@ -11,6 +11,7 @@ type Props = {
   isComplete: boolean;
   isSelected: boolean;
   isHighlighted: boolean;
+  isSameValue: boolean;
   hasConflict: boolean;
   onArrowKey: (index: number, key: string) => void;
 };
@@ -25,6 +26,7 @@ const GridCell = (props: Props) => {
     isComplete,
     isSelected,
     isHighlighted,
+    isSameValue,
     hasConflict,
     onArrowKey,
   } = props;
@@ -46,7 +48,7 @@ const GridCell = (props: Props) => {
     }
   };
 
-  let bgClassName = "bg-gray-200";
+  let bgClassName = "bg-gray-100";
   if (isComplete) {
     bgClassName += "bg-green-100";
   } else {
@@ -55,6 +57,8 @@ const GridCell = (props: Props) => {
     } else if (isSelected) {
       bgClassName = "bg-blue-200";
     } else if (isHighlighted) {
+      bgClassName = "bg-blue-50";
+    } else if (isSameValue) {
       bgClassName = "bg-blue-100";
     }
   }

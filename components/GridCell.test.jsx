@@ -51,6 +51,11 @@ describe("GridCell", () => {
       const { container } = render(<GridCell cell={filledCell} isComplete />);
       expect(container).toMatchSnapshot();
     });
+
+    it("when cell has same value as selected cell", () => {
+      const { container } = render(<GridCell cell={filledCell} hasSameValue />);
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it("calls onBlur when blurred", () => {

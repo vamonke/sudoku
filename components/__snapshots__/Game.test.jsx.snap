@@ -354,7 +354,7 @@ exports[`Game renders correctly when board is null 1`] = `
           class="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full"
         >
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-0"
             max="9"
@@ -365,7 +365,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-1"
             max="9"
@@ -376,7 +376,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-2"
             max="9"
@@ -387,7 +387,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="7"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-3"
             max="9"
@@ -398,7 +398,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-4"
             max="9"
@@ -409,7 +409,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-5"
             max="9"
@@ -420,7 +420,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="9"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-6"
             max="9"
@@ -431,7 +431,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-7"
             max="9"
@@ -442,7 +442,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="4"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-8"
             max="9"
@@ -453,7 +453,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="5"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-9"
             max="9"
@@ -463,7 +463,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-10"
             max="9"
@@ -474,7 +474,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="4"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-11"
             max="9"
@@ -484,7 +484,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-12"
             max="9"
@@ -495,7 +495,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-13"
             max="9"
@@ -506,7 +506,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-14"
             max="9"
@@ -517,7 +517,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-15"
             max="9"
@@ -527,7 +527,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-16"
             max="9"
@@ -537,7 +537,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-17"
             max="9"
@@ -548,7 +548,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-18"
             max="9"
@@ -559,7 +559,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="9"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-19"
             max="9"
@@ -570,7 +570,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-20"
             max="9"
@@ -581,7 +581,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-21"
             max="9"
@@ -592,7 +592,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="5"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-22"
             max="9"
@@ -603,7 +603,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="7"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-23"
             max="9"
@@ -614,7 +614,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="4"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-24"
             max="9"
@@ -625,7 +625,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-25"
             max="9"
@@ -636,7 +636,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-26"
             max="9"
@@ -647,7 +647,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-27"
             max="9"
@@ -657,7 +657,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-28"
             max="9"
@@ -668,7 +668,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="5"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-29"
             max="9"
@@ -679,7 +679,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="4"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-30"
             max="9"
@@ -690,7 +690,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-31"
             max="9"
@@ -701,7 +701,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-32"
             max="9"
@@ -712,7 +712,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-33"
             max="9"
@@ -723,7 +723,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-34"
             max="9"
@@ -734,7 +734,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-35"
             max="9"
@@ -745,7 +745,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="9"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-36"
             max="9"
@@ -756,7 +756,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-37"
             max="9"
@@ -767,7 +767,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-38"
             max="9"
@@ -778,7 +778,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-39"
             max="9"
@@ -788,7 +788,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-40"
             max="9"
@@ -798,7 +798,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-41"
             max="9"
@@ -808,7 +808,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-42"
             max="9"
@@ -819,7 +819,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-43"
             max="9"
@@ -829,7 +829,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-44"
             max="9"
@@ -840,7 +840,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="7"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-45"
             max="9"
@@ -851,7 +851,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-46"
             max="9"
@@ -862,7 +862,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-47"
             max="9"
@@ -873,7 +873,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="9"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-48"
             max="9"
@@ -883,7 +883,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-49"
             max="9"
@@ -894,7 +894,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="5"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-50"
             max="9"
@@ -905,7 +905,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-51"
             max="9"
@@ -916,7 +916,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="4"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-52"
             max="9"
@@ -927,7 +927,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-53"
             max="9"
@@ -938,7 +938,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-54"
             max="9"
@@ -948,7 +948,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-55"
             max="9"
@@ -958,7 +958,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-56"
             max="9"
@@ -969,7 +969,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-57"
             max="9"
@@ -980,7 +980,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-58"
             max="9"
@@ -990,7 +990,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-59"
             max="9"
@@ -1001,7 +1001,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="5"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-60"
             max="9"
@@ -1012,7 +1012,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-61"
             max="9"
@@ -1022,7 +1022,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-62"
             max="9"
@@ -1033,7 +1033,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-63"
             max="9"
@@ -1043,7 +1043,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-64"
             max="9"
@@ -1053,7 +1053,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-65"
             max="9"
@@ -1063,7 +1063,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-66"
             max="9"
@@ -1074,7 +1074,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-67"
             max="9"
@@ -1085,7 +1085,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="4"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-68"
             max="9"
@@ -1096,7 +1096,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-69"
             max="9"
@@ -1106,7 +1106,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+            class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
             data-testid="cell"
             id="cell-70"
             max="9"
@@ -1116,7 +1116,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value=""
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-71"
             max="9"
@@ -1127,7 +1127,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-72"
             max="9"
@@ -1138,7 +1138,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="3"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-73"
             max="9"
@@ -1149,7 +1149,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="1"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-74"
             max="9"
@@ -1160,7 +1160,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="8"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-75"
             max="9"
@@ -1171,7 +1171,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="9"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-76"
             max="9"
@@ -1182,7 +1182,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="6"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-77"
             max="9"
@@ -1193,7 +1193,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="7"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-78"
             max="9"
@@ -1204,7 +1204,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="5"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-79"
             max="9"
@@ -1215,7 +1215,7 @@ exports[`Game renders correctly when board is null 1`] = `
             value="2"
           />
           <input
-            class="flex items-center justify-center text-center select-none bg-gray-200"
+            class="flex items-center justify-center text-center select-none bg-gray-100"
             data-testid="cell"
             id="cell-80"
             max="9"

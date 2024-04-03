@@ -1,9 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`GridCell renders correctly when cell has same value as selected cell 1`] = `
+<div>
+  <input
+    class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
+    data-testid="cell"
+    id="cell-undefined"
+    max="9"
+    min="1"
+    step="1"
+    type="number"
+    value="5"
+  />
+</div>
+`;
+
 exports[`GridCell renders correctly when cell is complete 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center text-blue-400 bg-gray-200bg-green-100"
+    class="flex items-center justify-center text-center text-blue-400 bg-gray-100bg-green-100"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -18,7 +33,7 @@ exports[`GridCell renders correctly when cell is complete 1`] = `
 exports[`GridCell renders correctly when cell is highlighted 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+    class="flex items-center justify-center text-center text-blue-400 bg-blue-50"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -48,7 +63,7 @@ exports[`GridCell renders correctly when cell is selected 1`] = `
 exports[`GridCell renders correctly when cell is uneditable 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center select-none bg-gray-200"
+    class="flex items-center justify-center text-center select-none bg-gray-100"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -64,7 +79,7 @@ exports[`GridCell renders correctly when cell is uneditable 1`] = `
 exports[`GridCell renders correctly when cell value is a number 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+    class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -79,7 +94,7 @@ exports[`GridCell renders correctly when cell value is a number 1`] = `
 exports[`GridCell renders correctly when cell value is null 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+    class="flex items-center justify-center text-center text-blue-400 bg-gray-100"
     data-testid="cell"
     id="cell-undefined"
     max="9"
