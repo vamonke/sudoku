@@ -3,88 +3,85 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import Controls from "./Controls";
 
 describe("Controls", () => {
-  it("renders correctly", () => {
-    const { container } = render(<Controls />);
-    expect(container).toMatchSnapshot();
+  describe("renders correctly", () => {
+    it("when showConflict is true", () => {
+      const { container } = render(<Controls showConflict={true} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it("when showConflict is false", () => {
+      const { container } = render(<Controls showConflict={false} />);
+      expect(container).toMatchSnapshot();
+    });
   });
 
-  it("renders 4 buttons", () => {
-    render(<Controls />);
-    const buttons = screen.getAllByRole("button");
-    expect(buttons).toHaveLength(4);
+  describe("restart function", () => {
+    it("is called when the restart button is clicked", () => {
+      const mockRestart = jest.fn();
+      render(<Controls restart={mockRestart} />);
+      const restartButton = screen.getByTestId("restart");
+      restartButton.click();
+      expect(mockRestart).toHaveBeenCalled();
+    });
+
+    it("is called when r key is pressed", () => {
+      const mockRestart = jest.fn();
+      const { container } = render(<Controls restart={mockRestart} />);
+      fireEvent.keyUp(container, { key: "r" });
+      expect(mockRestart).toHaveBeenCalled();
+    });
   });
 
-  it("calls the restart function when the restart button is clicked", () => {
-    const mockRestart = jest.fn();
-    render(<Controls restart={mockRestart} />);
-    const restartButton = screen.getByTestId("restart");
-    restartButton.click();
-    expect(mockRestart).toHaveBeenCalled();
+  describe("newGame", () => {
+    it("is called when the new button is clicked", () => {
+      const mockNewGame = jest.fn();
+      render(<Controls newGame={mockNewGame} />);
+      const newButton = screen.getByTestId("new");
+      newButton.click();
+      expect(mockNewGame).toHaveBeenCalled();
+    });
+
+    it("is called when n key is pressed", () => {
+      const mockNewGame = jest.fn();
+      const { container } = render(<Controls newGame={mockNewGame} />);
+      fireEvent.keyUp(container, { key: "n" });
+      expect(mockNewGame).toHaveBeenCalled();
+    });
   });
 
-  it("calls the undo function when the undo button is clicked", () => {
-    const mockNewGame = jest.fn();
-    render(<Controls undo={mockNewGame} />);
-    const undoButton = screen.getByTestId("undo");
-    undoButton.click();
-    expect(mockNewGame).toHaveBeenCalled();
+  describe("undo function", () => {
+    it("is called when the undo button is clicked", () => {
+      const mockUndo = jest.fn();
+      render(<Controls undo={mockUndo} />);
+      const undoButton = screen.getByTestId("undo");
+      undoButton.click();
+      expect(mockUndo).toHaveBeenCalled();
+    });
+
+    it("is called when z key is pressed", () => {
+      const mockUndo = jest.fn();
+      const { container } = render(<Controls undo={mockUndo} />);
+      fireEvent.keyUp(container, { key: "z" });
+      expect(mockUndo).toHaveBeenCalled();
+    });
   });
 
-  it("calls the toggleShowConflict function when the toggle button is clicked", () => {
-    const mockUndo = jest.fn();
-    render(<Controls toggleShowConflict={mockUndo} />);
-    const toggleButton = screen.getByTestId("toggle");
-    toggleButton.click();
-    expect(mockUndo).toHaveBeenCalled();
-  });
+  describe("toggleShowConflict function", () => {
+    it("is called when the toggle button is clicked", () => {
+      const mockToggleShowConflict = jest.fn();
+      render(<Controls toggleShowConflict={mockToggleShowConflict} />);
+      const toggleButton = screen.getByTestId("toggle");
+      toggleButton.click();
+      expect(mockToggleShowConflict).toHaveBeenCalled();
+    });
 
-  it("calls the newGame function when the new button is clicked", () => {
-    const mockNewGame = jest.fn();
-    render(<Controls newGame={mockNewGame} />);
-    const newButton = screen.getByTestId("new");
-    newButton.click();
-    expect(mockNewGame).toHaveBeenCalled();
-  });
-
-  it("displays the correct text when showConflict is true", () => {
-    render(<Controls showConflict={true} />);
-    const toggleButton = screen.getByTestId("toggle");
-    expect(toggleButton).toHaveTextContent("Hide warnings (W)");
-  });
-
-  it("displays the correct text when showConflict is false", () => {
-    render(<Controls showConflict={false} />);
-    const toggleButton = screen.getByTestId("toggle");
-    expect(toggleButton).toHaveTextContent("Show warnings (W)");
-  });
-
-  it("should call the restart function when r key is pressed", () => {
-    const mockRestart = jest.fn();
-    const { container } = render(<Controls restart={mockRestart} />);
-    fireEvent.keyUp(container, { key: "r" });
-    expect(mockRestart).toHaveBeenCalled();
-  });
-
-  it("should call the newGame function when n key is pressed", () => {
-    const mockNewGame = jest.fn();
-    const { container } = render(<Controls newGame={mockNewGame} />);
-    fireEvent.keyUp(container, { key: "n" });
-    expect(mockNewGame).toHaveBeenCalled();
-  });
-
-  it("should call the undo function when z key is pressed", () => {
-    const mockUndo = jest.fn();
-    const { container } = render(<Controls undo={mockUndo} />);
-    fireEvent.keyUp(container, { key: "z" });
-    expect(mockUndo).toHaveBeenCalled();
-  });
-
-  it("should call the toggleShowConflict function when w key is pressed", () => {
-    const mockToggleShowConflict = jest.fn();
-    const { container } = render(
-      <Controls toggleShowConflict={mockToggleShowConflict} />
-    );
-    fireEvent.keyUp(container, { key: "w" });
-    expect(mockToggleShowConflict).toHaveBeenCalled();
+    it("is called when w key is pressed", () => {
+      const mockToggleShowConflict = jest.fn();
+      const { container } = render(
+        <Controls toggleShowConflict={mockToggleShowConflict} />
+      );
+      fireEvent.keyUp(container, { key: "w" });
+      expect(mockToggleShowConflict).toHaveBeenCalled();
+    });
   });
 });
