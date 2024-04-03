@@ -1,11 +1,12 @@
 import { Board, ConflictSet } from "@/types";
 
 export const parsePuzzleString = (puzzle: string): Board => {
-  return puzzle.split("").map((cell, index) => {
+  const sanitizedPuzzle = puzzle.slice(0, 81).replace(/[^1-9.]/g, ".");
+  const filledPuzzle = sanitizedPuzzle.padEnd(81, ".");
+  return filledPuzzle.split("").map((cell) => {
     const editable = cell === ".";
     const value = editable ? null : parseInt(cell, 10);
     return {
-      index,
       editable,
       value,
     };

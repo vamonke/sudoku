@@ -57,8 +57,8 @@ function boardReducer(state: Board, action: BoardAction) {
       });
     }
     case "update": {
-      return state.map((cell) => {
-        if (cell.index !== action.index) return cell;
+      return state.map((cell, index) => {
+        if (index !== action.index) return cell;
         return { ...cell, value: action.value };
       });
     }
