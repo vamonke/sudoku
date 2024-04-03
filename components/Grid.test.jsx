@@ -9,12 +9,7 @@ describe("Grid", () => {
   describe("renders correctly", () => {
     it("when showConflict is true", () => {
       const { container } = render(
-        <Grid
-          board={mockBoard}
-          selectedIndex={0}
-          conflictSet={mockConflictSet}
-          showConflict
-        />
+        <Grid board={mockBoard} conflictSet={mockConflictSet} showConflict />
       );
       expect(container).toMatchSnapshot();
     });
@@ -22,7 +17,6 @@ describe("Grid", () => {
       const { container } = render(
         <Grid
           board={mockBoard}
-          selectedIndex={null}
           conflictSet={mockConflictSet}
           showConflict={false}
         />

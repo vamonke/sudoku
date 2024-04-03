@@ -1,29 +1,20 @@
-import { Board } from "@/types";
-import GridCell from "./GridCell";
 import { RELATED_INDEX_MAP } from "@/hooks/useBoard";
+import { Board } from "@/types";
+import { useState } from "react";
+import GridCell from "./GridCell";
 
 type Props = {
   board: Board;
   onChangeCell: (index: number, value: number | null) => void;
-  selectedIndex: number | null;
-  onFocus: (index: number) => void;
-  onBlur: () => void;
   isComplete: boolean;
   showConflict: boolean;
   conflictSet: Set<number>;
 };
 
 export default function Grid(props: Props) {
-  const {
-    board,
-    onChangeCell,
-    selectedIndex,
-    onFocus,
-    onBlur,
-    isComplete,
-    showConflict,
-    conflictSet,
-  } = props;
+  const { board, onChangeCell, isComplete, showConflict, conflictSet } = props;
+
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const highlightedIndexes =
     selectedIndex === null ? [] : RELATED_INDEX_MAP.get(selectedIndex) ?? [];
@@ -60,16 +51,18 @@ export default function Grid(props: Props) {
         const isSelected = selectedIndex === index;
         const isHighlighted = highlightedIndexes.includes(index);
         const hasConflict = showConflict && conflictSet.has(index);
+        const onFocus = () => setSelectedIndex(index);
+        const onBlur = () => setSelectedIndex(null);
         return (
           <GridCell
             isComplete={isComplete}
             index={index}
             key={index}
             cell={cell}
-            onFocus={onFocus}
             onChangeCell={onChangeCell}
-            onBlur={onBlur}
             isSelected={isSelected}
+            onFocus={onFocus}
+            onBlur={onBlur}
             isHighlighted={isHighlighted}
             hasConflict={hasConflict}
             onArrowKey={onArrowKey}

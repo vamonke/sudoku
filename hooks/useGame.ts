@@ -3,13 +3,11 @@ import { fetchNewPuzzle } from "@/utils/puzzle";
 import { useCallback, useState } from "react";
 import { parsePuzzleString, useBoard } from "./useBoard";
 import { useMoves } from "./useMoves";
-import { useSelection } from "./useSelection";
 
 export function useGame(initialPuzzle: SudokuPuzzle) {
   const { board, newGame, restart, updateCell, isComplete, conflictSet } =
     useBoard(initialPuzzle);
   const { lastMove, canUndo, undo, addMove, clearMoves } = useMoves();
-  const { selectedIndex, onFocus, onBlur } = useSelection();
 
   const [puzzleId, setPuzzleId] = useState(initialPuzzle.id);
   const [showConflict, setShowConflict] = useState<boolean>(true);
@@ -40,14 +38,11 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
 
   return {
     board,
-    selectedIndex,
     restart,
     handleNewGame,
     canUndo,
     undo: handleUndo,
     onChangeCell,
-    onFocus,
-    onBlur,
     isComplete,
     conflictSet,
     showConflict,

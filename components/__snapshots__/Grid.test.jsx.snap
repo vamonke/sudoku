@@ -896,7 +896,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="5"
     />
     <input
-      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -905,7 +905,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value=""
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -915,7 +915,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="4"
     />
     <input
-      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -982,7 +982,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="2"
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -992,7 +992,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="9"
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1002,7 +1002,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="2"
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1072,7 +1072,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="8"
     />
     <input
-      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1161,7 +1161,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="9"
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1247,7 +1247,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="7"
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1336,7 +1336,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="6"
     />
     <input
-      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1422,7 +1422,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="1"
     />
     <input
-      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"
@@ -1507,7 +1507,7 @@ exports[`Grid renders correctly when showConflict is true 1`] = `
       value="3"
     />
     <input
-      class="flex items-center justify-center text-center select-none bg-blue-100"
+      class="flex items-center justify-center text-center select-none bg-gray-200"
       data-testid="cell"
       max="9"
       min="1"

@@ -13,13 +13,10 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
     handleNewGame,
     undo,
     isComplete,
-    onBlur,
-    onFocus,
     onChangeCell,
     toggleShowConflict,
     showConflict,
     conflictSet,
-    selectedIndex,
   } = useGame(initialPuzzle);
 
   return (
@@ -40,9 +37,6 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
             <Grid
               board={board}
               onChangeCell={onChangeCell}
-              selectedIndex={selectedIndex}
-              onFocus={onFocus}
-              onBlur={onBlur}
               isComplete={isComplete}
               showConflict={showConflict}
               conflictSet={conflictSet}
