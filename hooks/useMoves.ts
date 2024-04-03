@@ -44,8 +44,5 @@ function movesReducer(state: GameMove[], action: MovesAction) {
     case "clear": {
       return [];
     }
-    default: {
-      return state;
-    }
   }
 }
