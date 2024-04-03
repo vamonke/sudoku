@@ -1,8 +1,8 @@
 export type Cell = {
-  index: number; // Can remove this?
-  type: "prefilled" | "empty";
+  index: number;
+  editable: boolean;
   value: number | null;
-  status?: CellStatus;
+  // status?: CellStatus;
 };
 
 export type GameMove = {
@@ -24,8 +24,4 @@ export type SudokuPuzzle = {
   puzzle: string;
 };
 
-export type GameStatus = {
-  conflictSet?: Set<number>;
-  emptySet?: Set<number>;
-  isComplete: boolean;
-};
+export type ConflictSet = Set<number>;

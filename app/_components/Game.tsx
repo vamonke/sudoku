@@ -8,16 +8,18 @@ import Controls from "./Controls";
 export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
   const { initialPuzzle } = props;
   const {
-    cells,
-    onFocusCell,
-    onChangeCell,
-    onBlurCell,
+    board,
     restart,
-    newGame,
+    handleNewGame,
     undo,
-    status: { isComplete },
-    toggleShowConflicts,
-    showConflicts,
+    isComplete,
+    onBlur,
+    onFocus,
+    onChangeCell,
+    toggleShowConflict,
+    showConflict,
+    conflictSet,
+    selectedIndex,
   } = useGame(initialPuzzle);
 
   return (
@@ -26,22 +28,24 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
         <h1 className="text-xl text-center">SUDOKU</h1>
         <Controls
           restart={restart}
-          newGame={newGame}
+          newGame={handleNewGame}
           undo={undo}
-          toggleShowConflicts={toggleShowConflicts}
-          showConflicts={showConflicts}
+          toggleShowConflict={toggleShowConflict}
+          showConflict={showConflict}
         />
       </div>
       <div className="grow flex flex-col justify-center items-center pb-8">
         <div className="aspect-square" style={{ height: 512, width: 512 }}>
-          {cells ? (
+          {board ? (
             <Grid
-              cells={cells}
-              onFocusCell={onFocusCell}
+              board={board}
               onChangeCell={onChangeCell}
-              onBlurCell={onBlurCell}
-              showConflicts={showConflicts}
+              selectedIndex={selectedIndex}
+              onFocus={onFocus}
+              onBlur={onBlur}
               isComplete={isComplete}
+              showConflict={showConflict}
+              conflictSet={conflictSet}
             />
           ) : (
             <EmptyGrid />

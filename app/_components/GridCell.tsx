@@ -3,26 +3,30 @@ import classNames from "classnames";
 
 type Props = {
   index: number;
-  cell?: Cell;
-  showConflict?: boolean;
-  onChangeCell?: (index: number, value: number | null) => void;
-  onFocusCell?: (index: number) => void;
-  onBlurCell?: (index: number) => void;
-  isComplete?: boolean;
+  cell: Cell;
+  showConflict: boolean;
+  onChangeCell: (index: number, value: number | null) => void;
+  onFocus: (index: number) => void;
+  onBlur: () => void;
+  isComplete: boolean;
+  isSelected: boolean;
+  isHighlighted: boolean;
+  hasConflict: boolean;
 };
 
 const GridCell = (props: Props) => {
   const {
-    cell,
     index,
+    cell: { value, editable },
     onChangeCell,
-    onFocusCell,
-    onBlurCell,
+    onFocus,
+    onBlur,
     showConflict,
     isComplete,
+    isSelected,
+    isHighlighted,
+    hasConflict,
   } = props;
-  const { value, type, status } = cell ?? {};
-  const { isSelected, isHighlighted, hasConflict } = status ?? {};
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (/^ArrowUp|ArrowDown|ArrowLeft|ArrowRight$/.test(e.key)) {
@@ -65,25 +69,26 @@ const GridCell = (props: Props) => {
     }
   };
 
-  const onFocus = () => {
-    onFocusCell?.(index);
-  };
-
-  const onBlur = () => {
-    onBlurCell?.(index);
-  };
-
-  const uneditable = type === "prefilled";
   const hasConflictClass = hasConflict && showConflict;
 
+  let bgClassName = "bg-gray-200";
+  if (isComplete) {
+    bgClassName += "bg-green-100";
+  } else {
+    if (hasConflictClass) {
+      bgClassName = "bg-red-100";
+    } else if (isSelected) {
+      bgClassName = "bg-blue-200";
+    } else if (isHighlighted) {
+      bgClassName = "bg-blue-100";
+    }
+  }
+
   const className = classNames(
-    "bg-gray-200 flex items-center justify-center text-center",
-    isSelected && "bg-blue-200",
-    isHighlighted && "bg-blue-100",
-    hasConflictClass && "bg-red-100",
-    uneditable && "select-none",
-    !uneditable && (hasConflictClass ? "text-red-400" : "text-blue-400"),
-    isComplete && "bg-green-100"
+    "flex items-center justify-center text-center",
+    editable && (hasConflictClass ? "text-red-400" : "text-blue-400"),
+    !editable && "select-none",
+    bgClassName
   );
 
   return (
@@ -92,13 +97,13 @@ const GridCell = (props: Props) => {
       value={value ?? ""}
       onKeyDown={handleKeyDown}
       onChange={handleChange}
-      readOnly={uneditable}
+      readOnly={!editable}
+      onFocus={() => onFocus(index)}
+      onBlur={() => onBlur()}
       type="number"
       min={1}
       max={9}
       step={1}
-      onFocus={onFocus}
-      onBlur={onBlur}
     />
   );
 };

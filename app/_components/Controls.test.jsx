@@ -30,30 +30,30 @@ describe("Controls", () => {
     expect(mockNewGame).toHaveBeenCalled();
   });
 
-  it("calls the toggleShowConflicts function when the toggle button is clicked", () => {
+  it("calls the toggleShowConflict function when the toggle button is clicked", () => {
     const mockUndo = jest.fn();
-    render(<Controls toggleShowConflicts={mockUndo} />);
+    render(<Controls toggleShowConflict={mockUndo} />);
     const toggleButton = screen.getByTestId("toggle");
     toggleButton.click();
     expect(mockUndo).toHaveBeenCalled();
   });
 
   it("calls the newGame function when the new button is clicked", () => {
-    const mockToggleShowConflicts = jest.fn();
-    render(<Controls newGame={mockToggleShowConflicts} />);
+    const mockNewGame = jest.fn();
+    render(<Controls newGame={mockNewGame} />);
     const newButton = screen.getByTestId("new");
     newButton.click();
-    expect(mockToggleShowConflicts).toHaveBeenCalled();
+    expect(mockNewGame).toHaveBeenCalled();
   });
 
-  it("displays the correct text when showConflicts is true", () => {
-    render(<Controls showConflicts={true} />);
+  it("displays the correct text when showConflict is true", () => {
+    render(<Controls showConflict={true} />);
     const toggleButton = screen.getByTestId("toggle");
     expect(toggleButton).toHaveTextContent("Hide warnings (W)");
   });
 
-  it("displays the correct text when showConflicts is false", () => {
-    render(<Controls showConflicts={false} />);
+  it("displays the correct text when showConflict is false", () => {
+    render(<Controls showConflict={false} />);
     const toggleButton = screen.getByTestId("toggle");
     expect(toggleButton).toHaveTextContent("Show warnings (W)");
   });
@@ -79,12 +79,12 @@ describe("Controls", () => {
     expect(mockUndo).toHaveBeenCalled();
   });
 
-  it("should call the toggleShowConflicts function when w key is pressed", () => {
-    const mockToggleShowConflicts = jest.fn();
+  it("should call the toggleShowConflict function when w key is pressed", () => {
+    const mockToggleShowConflict = jest.fn();
     const { container } = render(
-      <Controls toggleShowConflicts={mockToggleShowConflicts} />
+      <Controls toggleShowConflict={mockToggleShowConflict} />
     );
     fireEvent.keyUp(container, { key: "w" });
-    expect(mockToggleShowConflicts).toHaveBeenCalled();
+    expect(mockToggleShowConflict).toHaveBeenCalled();
   });
 });
