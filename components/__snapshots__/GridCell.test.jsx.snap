@@ -5,6 +5,7 @@ exports[`GridCell renders correctly when cell is complete 1`] = `
   <input
     class="flex items-center justify-center text-center text-blue-400 bg-gray-200bg-green-100"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     step="1"
@@ -19,6 +20,7 @@ exports[`GridCell renders correctly when cell is highlighted 1`] = `
   <input
     class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     step="1"
@@ -33,6 +35,7 @@ exports[`GridCell renders correctly when cell is selected 1`] = `
   <input
     class="flex items-center justify-center text-center text-blue-400 bg-blue-200"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     step="1"
@@ -47,6 +50,7 @@ exports[`GridCell renders correctly when cell is uneditable 1`] = `
   <input
     class="flex items-center justify-center text-center select-none bg-gray-200"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     readonly=""
@@ -62,6 +66,7 @@ exports[`GridCell renders correctly when cell value is a number 1`] = `
   <input
     class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     step="1"
@@ -76,6 +81,7 @@ exports[`GridCell renders correctly when cell value is null 1`] = `
   <input
     class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     step="1"
@@ -90,6 +96,7 @@ exports[`GridCell renders correctly when editable cell has conflict 1`] = `
   <input
     class="flex items-center justify-center text-center text-red-400 bg-red-100"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     step="1"
@@ -104,6 +111,7 @@ exports[`GridCell renders correctly when unedtiable cell has conflict 1`] = `
   <input
     class="flex items-center justify-center text-center select-none bg-red-100"
     data-testid="cell"
+    id="cell-undefined"
     max="9"
     min="1"
     readonly=""

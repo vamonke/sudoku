@@ -38,10 +38,7 @@ export default function Grid(props: Props) {
         break;
     }
     if (nextIndex !== null && nextIndex >= 0 && nextIndex < 81) {
-      const nextCell = document.querySelector(
-        `input:nth-child(${nextIndex + 1})`
-      ); // Is there a better way to do this?
-      if (nextCell) (nextCell as HTMLElement).focus();
+      setSelectedIndex(nextIndex);
     }
   };
 

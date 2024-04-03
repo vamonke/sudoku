@@ -92,7 +92,7 @@ describe("GridCell", () => {
     expect(onChangeCell).toHaveBeenCalledWith(0, null);
   });
 
-  it("should call onArrowKey when arrow key is pressed", () => {
+  it("calls onArrowKey when arrow key is pressed", () => {
     const onArrowKeyMock = jest.fn();
     const { getByTestId } = render(
       <GridCell index={0} cell={emptyCell} onArrowKey={onArrowKeyMock} />
@@ -109,5 +109,15 @@ describe("GridCell", () => {
 
     fireEvent.keyDown(inputElement, { key: "ArrowLeft" });
     expect(onArrowKeyMock).toHaveBeenCalledWith(0, "ArrowLeft");
+  });
+
+  it("disable default onChange behavior", () => {
+    render(<GridCell index={0} cell={filledCell} />);
+    const mockChange = jest.fn();
+    fireEvent.change(screen.getByTestId("cell"), {
+      target: { value: "6" },
+      preventDefault: mockChange,
+    });
+    expect(mockChange).not.toHaveBeenCalled();
   });
 });

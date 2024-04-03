@@ -1,11 +1,12 @@
 import { Cell } from "@/types";
 import classNames from "classnames";
+import { useEffect, useRef } from "react";
 
 type Props = {
   index: number;
   cell: Cell;
   onChangeCell: (index: number, value: number | null) => void;
-  onFocus: (index: number) => void;
+  onFocus: () => void;
   onBlur: () => void;
   isComplete: boolean;
   isSelected: boolean;
@@ -27,6 +28,8 @@ const GridCell = (props: Props) => {
     hasConflict,
     onArrowKey,
   } = props;
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -63,16 +66,24 @@ const GridCell = (props: Props) => {
     bgClassName
   );
 
+  useEffect(() => {
+    if (isSelected && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isSelected]);
+
   return (
     <input
+      id={`cell-${index}`} // for debugging
+      ref={inputRef}
       data-testid="cell"
       className={className}
       value={value ?? ""}
       onKeyDown={handleKeyDown}
       onChange={(e) => e.preventDefault()}
       readOnly={!editable}
-      onFocus={() => onFocus(index)}
-      onBlur={() => onBlur()}
+      onFocus={onFocus}
+      onBlur={onBlur}
       type="number"
       min={1}
       max={9}
