@@ -13,6 +13,7 @@ const config = {
   collectCoverageFrom: [
     "components/**/*.{js,jsx,ts,tsx}",
     "hooks/**/*.{js,jsx,ts,tsx}",
+    "utils/**/*.{js,jsx,ts,tsx}",
     "!**/coverage/**",
   ],
 };
