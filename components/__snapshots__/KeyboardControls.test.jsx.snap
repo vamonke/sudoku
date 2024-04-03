@@ -3,27 +3,59 @@
 exports[`KeyboardControls renders correctly when showConflict is false 1`] = `
 <div>
   <div
-    class="flex flex-row gap-4 items-center justify-even"
+    class="flex flex-row gap-6 items-center justify-even"
   >
     <button
+      class="flex items-center gap-2"
       data-testid="reset"
     >
-      Reset (R)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        R
+      </div>
+      <div>
+        Reset
+      </div>
     </button>
     <button
+      class="flex items-center gap-2"
       data-testid="new"
     >
-      New Game (N)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        N
+      </div>
+      <div>
+        New Game
+      </div>
     </button>
     <button
+      class="flex items-center gap-2"
       data-testid="undo"
     >
-      Undo (Z)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        Z
+      </div>
+      <div>
+        Undo
+      </div>
     </button>
     <button
+      class="flex items-center gap-2"
       data-testid="toggle"
     >
-      Highlight errors (E)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        E
+      </div>
+      <div>
+        Highlight errors
+      </div>
     </button>
   </div>
 </div>
@@ -32,27 +64,59 @@ exports[`KeyboardControls renders correctly when showConflict is false 1`] = `
 exports[`KeyboardControls renders correctly when showConflict is true 1`] = `
 <div>
   <div
-    class="flex flex-row gap-4 items-center justify-even"
+    class="flex flex-row gap-6 items-center justify-even"
   >
     <button
+      class="flex items-center gap-2"
       data-testid="reset"
     >
-      Reset (R)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        R
+      </div>
+      <div>
+        Reset
+      </div>
     </button>
     <button
+      class="flex items-center gap-2"
       data-testid="new"
     >
-      New Game (N)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        N
+      </div>
+      <div>
+        New Game
+      </div>
     </button>
     <button
+      class="flex items-center gap-2"
       data-testid="undo"
     >
-      Undo (Z)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        Z
+      </div>
+      <div>
+        Undo
+      </div>
     </button>
     <button
+      class="flex items-center gap-2"
       data-testid="toggle"
     >
-      Hide errors (E)
+      <div
+        class="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2"
+      >
+        E
+      </div>
+      <div>
+        Hide errors
+      </div>
     </button>
   </div>
 </div>

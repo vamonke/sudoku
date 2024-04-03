@@ -40,7 +40,14 @@ describe("GridCell", () => {
       expect(container).toMatchSnapshot();
     });
 
-    it("when unedtiable cell has conflict", () => {
+    it("when selected cell has conflict", () => {
+      const { container } = render(
+        <GridCell cell={filledCell} isSelected hasConflict />
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it("when uneditable cell has conflict", () => {
       const { container } = render(
         <GridCell cell={uneditableCell} hasConflict />
       );

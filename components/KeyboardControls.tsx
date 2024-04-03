@@ -42,6 +42,7 @@ export default function KeyboardControls(props: Props) {
         ({ key: key, text: text, shortcut: shortcut, onClick: onClick }) => (
           <button
             key={key}
+            data-testid={key}
             onClick={onClick}
             className="flex items-center gap-2"
           >

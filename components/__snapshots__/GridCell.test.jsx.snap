@@ -3,7 +3,7 @@
 exports[`GridCell renders correctly when cell has same value as selected cell 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-indigo-400 bg-gray-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-indigo-400 bg-gray-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -18,7 +18,7 @@ exports[`GridCell renders correctly when cell has same value as selected cell 1`
 exports[`GridCell renders correctly when cell is complete 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-indigo-400 bg-emerald-100 border-emerald-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-indigo-400 bg-emerald-100 border-emerald-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -33,7 +33,7 @@ exports[`GridCell renders correctly when cell is complete 1`] = `
 exports[`GridCell renders correctly when cell is highlighted 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-indigo-400 bg-indigo-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-indigo-400 bg-indigo-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -48,7 +48,7 @@ exports[`GridCell renders correctly when cell is highlighted 1`] = `
 exports[`GridCell renders correctly when cell is selected 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-indigo-500 bg-indigo-300 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-indigo-500 bg-indigo-300 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -63,7 +63,7 @@ exports[`GridCell renders correctly when cell is selected 1`] = `
 exports[`GridCell renders correctly when cell is uneditable 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium select-none text-indigo-800 bg-gray-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl select-none text-indigo-800 bg-gray-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -79,7 +79,7 @@ exports[`GridCell renders correctly when cell is uneditable 1`] = `
 exports[`GridCell renders correctly when cell value is a number 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-indigo-400 bg-gray-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-indigo-400 bg-gray-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -94,7 +94,7 @@ exports[`GridCell renders correctly when cell value is a number 1`] = `
 exports[`GridCell renders correctly when cell value is null 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-indigo-400 bg-gray-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-indigo-400 bg-gray-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -109,7 +109,7 @@ exports[`GridCell renders correctly when cell value is null 1`] = `
 exports[`GridCell renders correctly when editable cell has conflict 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium text-pink-600 bg-pink-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-pink-600 bg-pink-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
@@ -121,10 +121,25 @@ exports[`GridCell renders correctly when editable cell has conflict 1`] = `
 </div>
 `;
 
-exports[`GridCell renders correctly when unedtiable cell has conflict 1`] = `
+exports[`GridCell renders correctly when selected cell has conflict 1`] = `
 <div>
   <input
-    class="flex items-center justify-center text-center outline-none font-medium select-none text-indigo-800 bg-pink-100 border-violet-200 border-r-2 border-b-2"
+    class="flex items-center justify-center text-center outline-none font-light text-3xl text-pink-600 bg-indigo-300 border-violet-200 border-r-2 border-b-2"
+    data-testid="cell"
+    id="cell-undefined"
+    max="9"
+    min="1"
+    step="1"
+    type="number"
+    value="5"
+  />
+</div>
+`;
+
+exports[`GridCell renders correctly when uneditable cell has conflict 1`] = `
+<div>
+  <input
+    class="flex items-center justify-center text-center outline-none font-light text-3xl select-none text-indigo-800 bg-pink-100 border-violet-200 border-r-2 border-b-2"
     data-testid="cell"
     id="cell-undefined"
     max="9"
