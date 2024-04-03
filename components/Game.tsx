@@ -22,7 +22,7 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
     <main className="flex flex-col h-full bg-indigo-50 p-4">
       <div className="p-4">
         <h1 className="text-5xl text-center font-light text-indigo-900">
-          SUDOKU
+          sudoku
         </h1>
         <div className="text-center text-gray-600 mt-4">
           Fill the 9x9 grid with digits so that each column, row, and 3x3
