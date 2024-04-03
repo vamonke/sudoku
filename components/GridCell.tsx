@@ -16,6 +16,7 @@ type Props = {
   onArrowKey: (index: number, key: string) => void;
 };
 
+// Use React.memo to prevent unnecessary re-renders
 const GridCell = (props: Props) => {
   const {
     index,
@@ -50,24 +51,53 @@ const GridCell = (props: Props) => {
 
   let bgClassName = "bg-gray-100";
   if (isComplete) {
-    bgClassName += "bg-green-100";
+    bgClassName = "bg-emerald-100";
   } else {
-    if (hasConflict) {
-      bgClassName = "bg-red-100";
-    } else if (isSelected) {
-      bgClassName = "bg-blue-200";
+    if (isSelected) {
+      bgClassName = "bg-indigo-300";
+    } else if (hasConflict) {
+      bgClassName = "bg-pink-100";
     } else if (isHighlighted) {
-      bgClassName = "bg-blue-50";
+      bgClassName = "bg-indigo-100";
     } else if (isSameValue) {
-      bgClassName = "bg-blue-100";
+      bgClassName = "bg-indigo-200";
     }
   }
 
+  let textClassName;
+  if (editable) {
+    if (isSelected) {
+      if (hasConflict) {
+        textClassName = "text-pink-600"; // editable, selected, hasConflict
+      } else {
+        textClassName = "text-indigo-500"; // editable, selected, no conflict
+      }
+    } else {
+      if (hasConflict) {
+        textClassName = "text-pink-600"; // editable, not selected, hasConflict
+      } else {
+        textClassName = "text-indigo-400"; // editable, not selected, no conflict
+      }
+    }
+  } else {
+    if (isSelected) {
+      textClassName = "text-indigo-900";
+    } else {
+      textClassName = "text-indigo-800";
+    }
+  }
+
+  const y = Math.floor(index / 9);
+  const x = index % 9;
+
   const className = classNames(
-    "flex items-center justify-center text-center",
-    editable && (hasConflict ? "text-red-400" : "text-blue-400"),
+    "flex items-center justify-center text-center outline-none font-medium",
     !editable && "select-none",
-    bgClassName
+    textClassName,
+    bgClassName,
+    isComplete ? "border-emerald-200" : "border-violet-200",
+    x !== 8 && (x === 2 || x === 5 ? "border-r-4" : "border-r-2"),
+    y !== 8 && (y === 2 || y === 5 ? "border-b-4" : "border-b-2")
   );
 
   useEffect(() => {

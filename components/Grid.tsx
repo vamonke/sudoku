@@ -45,7 +45,11 @@ export default function Grid(props: Props) {
   };
 
   return (
-    <div className="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full">
+    <div
+      className={`grid grid-cols-9 grid-rows-9 h-full w-full border-4 ${
+        isComplete ? "border-emerald-200" : "border-violet-200"
+      } rounded-xl overflow-hidden`}
+    >
       {board.map((cell, index) => {
         const isSelected = selectedIndex === index;
         const isHighlighted = highlightedIndexes.includes(index);
