@@ -1,0 +1,1601 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid renders correctly when showConflict is false 1`] = `
+<div>
+  <div
+    class="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full"
+  >
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+  </div>
+</div>
+`;
+
+exports[`Grid renders correctly when showConflict is true 1`] = `
+<div>
+  <div
+    class="grid grid-cols-9 grid-rows-9 gap-1 h-full w-full"
+  >
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-red-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center text-blue-400 bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      step="1"
+      type="number"
+      value=""
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-blue-100"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="3"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="1"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="8"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="9"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="6"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="7"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="5"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="2"
+    />
+    <input
+      class="flex items-center justify-center text-center select-none bg-gray-200"
+      data-testid="cell"
+      max="9"
+      min="1"
+      readonly=""
+      step="1"
+      type="number"
+      value="4"
+    />
+  </div>
+</div>
+`;

@@ -26,7 +26,7 @@ export default function Grid(props: Props) {
   } = props;
 
   const highlightedIndexes =
-    selectedIndex === null ? [] : RELATED_INDEX_MAP[selectedIndex];
+    selectedIndex === null ? [] : RELATED_INDEX_MAP.get(selectedIndex) ?? [];
 
   const onArrowKey = (index: number, key: string) => {
     let nextIndex = null;

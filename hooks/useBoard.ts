@@ -55,7 +55,7 @@ const findConflict = (board: Board): ConflictSet => {
   const conflictSet = new Set<number>();
   board.forEach((cell, index) => {
     if (!cell.value) return;
-    const relevantIndexes = RELATED_INDEX_MAP[index];
+    const relevantIndexes = RELATED_INDEX_MAP.get(index) ?? [];
     const hasConflict = relevantIndexes.some((relatedIndex) => {
       return board[relatedIndex].value === cell.value;
     });
@@ -67,8 +67,8 @@ const findConflict = (board: Board): ConflictSet => {
   return conflictSet;
 };
 
-const getRelatedIndexMap = (): number[][] => {
-  const indexSet = new Array(81).fill(null).map(() => new Set<number>());
+const getRelatedIndexMap = (): Map<number, number[]> => {
+  const indexMatrix = new Array(81).fill(0).map(() => new Set<number>());
   for (let i = 0; i < 81; i++) {
     const x = i % 9;
     const y = Math.floor(i / 9);
@@ -78,16 +78,19 @@ const getRelatedIndexMap = (): number[][] => {
       const y2 = Math.floor(j / 9);
       const subgrid2 = Math.floor(y2 / 3) * 3 + Math.floor(x2 / 3);
       if (x === x2 || y === y2 || subgrid === subgrid2) {
-        indexSet[i].add(j);
-        indexSet[j].add(i);
+        indexMatrix[i].add(j);
+        indexMatrix[j].add(i);
       }
     }
   }
-  const indexArray = indexSet.map((set) => Array.from(set));
-  return indexArray;
+  const relatedIndexMap = new Map<number, number[]>();
+  indexMatrix.forEach((relatedIndexes, index) => {
+    relatedIndexMap.set(index, Array.from(relatedIndexes));
+  });
+  return relatedIndexMap;
 };
 
-export const RELATED_INDEX_MAP: number[][] = getRelatedIndexMap();
+export const RELATED_INDEX_MAP = getRelatedIndexMap();
 
 type BoardAction =
   | { type: "restart" }
