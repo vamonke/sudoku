@@ -17,9 +17,9 @@ exports[`Game renders correctly when board is not null 1`] = `
         class="flex flex-row gap-4 mt-2 justify-center items-center"
       >
         <button
-          data-testid="restart"
+          data-testid="reset"
         >
-          Restart (R)
+          Reset (R)
         </button>
         <button
           data-testid="new"
@@ -322,9 +322,9 @@ exports[`Game renders correctly when board is null 1`] = `
         class="flex flex-row gap-4 mt-2 justify-center items-center"
       >
         <button
-          data-testid="restart"
+          data-testid="reset"
         >
-          Restart (R)
+          Reset (R)
         </button>
         <button
           data-testid="new"

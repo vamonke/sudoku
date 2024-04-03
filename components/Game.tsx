@@ -9,7 +9,7 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
   const { initialPuzzle } = props;
   const {
     board,
-    restart,
+    reset,
     handleNewGame,
     undo,
     isComplete,
@@ -24,7 +24,7 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
       <div className="p-4">
         <h1 className="text-xl text-center">SUDOKU</h1>
         <Controls
-          restart={restart}
+          reset={reset}
           newGame={handleNewGame}
           undo={undo}
           toggleShowConflict={toggleShowConflict}

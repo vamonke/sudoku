@@ -15,20 +15,20 @@ describe("Controls", () => {
     });
   });
 
-  describe("restart function", () => {
-    it("is called when the restart button is clicked", () => {
-      const mockRestart = jest.fn();
-      render(<Controls restart={mockRestart} />);
-      const restartButton = screen.getByTestId("restart");
-      restartButton.click();
-      expect(mockRestart).toHaveBeenCalled();
+  describe("reset function", () => {
+    it("is called when the reset button is clicked", () => {
+      const mockReset = jest.fn();
+      render(<Controls reset={mockReset} />);
+      const resetButton = screen.getByTestId("reset");
+      resetButton.click();
+      expect(mockReset).toHaveBeenCalled();
     });
 
     it("is called when r key is pressed", () => {
-      const mockRestart = jest.fn();
-      const { container } = render(<Controls restart={mockRestart} />);
+      const mockReset = jest.fn();
+      const { container } = render(<Controls reset={mockReset} />);
       fireEvent.keyUp(container, { key: "r" });
-      expect(mockRestart).toHaveBeenCalled();
+      expect(mockReset).toHaveBeenCalled();
     });
   });
 

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useReducer, useState } from "react";
-import { Board, ConflictSet, SudokuPuzzle } from "@/types";
+import { Board, SudokuPuzzle } from "@/types";
+import { findConflict, parsePuzzleString } from "@/utils/puzzle";
 
 export function useBoard(initialPuzzle: SudokuPuzzle) {
   const [board, boardDispatch] = useReducer(
@@ -9,12 +10,12 @@ export function useBoard(initialPuzzle: SudokuPuzzle) {
   );
   const [conflictSet, setConflictSet] = useState<Set<number>>(new Set());
 
-  const newGame = async (newBoard: Board) => {
-    boardDispatch({ type: "new", value: newBoard });
+  const setBoard = (value: Board) => {
+    boardDispatch({ type: "setBoard", value });
   };
 
-  const restart = useCallback(() => {
-    boardDispatch({ type: "restart" });
+  const reset = useCallback(() => {
+    boardDispatch({ type: "reset" });
   }, []);
 
   const updateCell = (index: number, value: number | null) => {
@@ -31,78 +32,25 @@ export function useBoard(initialPuzzle: SudokuPuzzle) {
 
   return {
     board,
-    newGame,
-    restart,
+    setBoard,
+    reset,
     updateCell,
     isComplete,
     conflictSet,
   };
 }
 
-export const parsePuzzleString = (puzzle: string): Board => {
-  return puzzle.split("").map((cell, index) => {
-    const editable = cell === ".";
-    const value = editable ? null : parseInt(cell, 10);
-    return {
-      index,
-      editable,
-      value,
-    };
-  });
-};
-
-const findConflict = (board: Board): ConflictSet => {
-  const conflictSet = new Set<number>();
-  board.forEach((cell, index) => {
-    if (!cell.value) return;
-    const relevantIndexes = RELATED_INDEX_MAP.get(index) ?? [];
-    const hasConflict = relevantIndexes.some((relatedIndex) => {
-      return board[relatedIndex].value === cell.value;
-    });
-    if (hasConflict) {
-      conflictSet.add(index);
-    }
-  });
-
-  return conflictSet;
-};
-
-const getRelatedIndexMap = (): Map<number, number[]> => {
-  const indexMatrix = new Array(81).fill(0).map(() => new Set<number>());
-  for (let i = 0; i < 81; i++) {
-    const x = i % 9;
-    const y = Math.floor(i / 9);
-    const subgrid = Math.floor(y / 3) * 3 + Math.floor(x / 3);
-    for (let j = i + 1; j < 81; j++) {
-      const x2 = j % 9;
-      const y2 = Math.floor(j / 9);
-      const subgrid2 = Math.floor(y2 / 3) * 3 + Math.floor(x2 / 3);
-      if (x === x2 || y === y2 || subgrid === subgrid2) {
-        indexMatrix[i].add(j);
-        indexMatrix[j].add(i);
-      }
-    }
-  }
-  const relatedIndexMap = new Map<number, number[]>();
-  indexMatrix.forEach((relatedIndexes, index) => {
-    relatedIndexMap.set(index, Array.from(relatedIndexes));
-  });
-  return relatedIndexMap;
-};
-
-export const RELATED_INDEX_MAP = getRelatedIndexMap();
-
 type BoardAction =
-  | { type: "restart" }
+  | { type: "reset" }
   | { type: "update"; index: number; value: number | null }
-  | { type: "new"; value: Board };
+  | { type: "setBoard"; value: Board };
 
 function boardReducer(state: Board, action: BoardAction) {
   switch (action.type) {
-    case "new": {
+    case "setBoard": {
       return action.value;
     }
-    case "restart": {
+    case "reset": {
       return state.map((cell) => {
         if (!cell.editable) return cell;
         return { ...cell, value: null };
@@ -113,9 +61,6 @@ function boardReducer(state: Board, action: BoardAction) {
         if (cell.index !== action.index) return cell;
         return { ...cell, value: action.value };
       });
-    }
-    default: {
-      return state;
     }
   }
 }

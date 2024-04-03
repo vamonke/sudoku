@@ -1,11 +1,12 @@
 import { SudokuPuzzle } from "@/types";
-import { fetchNewPuzzle } from "@/utils/puzzle";
+import { parsePuzzleString } from "@/utils/puzzle";
 import { useCallback, useState } from "react";
-import { parsePuzzleString, useBoard } from "./useBoard";
+import { useBoard } from "./useBoard";
 import { useMoves } from "./useMoves";
+import { supabaseClient } from "@/utils/supabase/client";
 
 export function useGame(initialPuzzle: SudokuPuzzle) {
-  const { board, newGame, restart, updateCell, isComplete, conflictSet } =
+  const { board, setBoard, reset, updateCell, isComplete, conflictSet } =
     useBoard(initialPuzzle);
   const { lastMove, canUndo, undo, addMove, clearMoves } = useMoves();
 
@@ -23,9 +24,9 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
   const handleNewGame = useCallback(async () => {
     clearMoves();
     const newPuzzle = await fetchNewPuzzle(puzzleId);
-    newGame(parsePuzzleString(newPuzzle.puzzle));
+    setBoard(parsePuzzleString(newPuzzle.puzzle));
     setPuzzleId(newPuzzle.id);
-  }, [newGame, clearMoves, puzzleId]);
+  }, [setBoard, clearMoves, puzzleId]);
 
   const handleUndo = useCallback(() => {
     if (canUndo) {
@@ -38,7 +39,7 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
 
   return {
     board,
-    restart,
+    reset,
     handleNewGame,
     canUndo,
     undo: handleUndo,
@@ -49,3 +50,15 @@ export function useGame(initialPuzzle: SudokuPuzzle) {
     toggleShowConflict,
   };
 }
+
+export const fetchNewPuzzle = async (puzzleId: string) => {
+  const { data, error } = await supabaseClient.rpc("get_random_puzzle", {
+    pid: puzzleId,
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};

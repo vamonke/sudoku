@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react";
 import { useMoves } from "./useMoves";
 
-describe("useCounter", () => {
+describe("useMoves", () => {
   it("returns the initial value", () => {
     const { result } = renderHook(useMoves);
     expect(result.current.lastMove).toBe(undefined);
