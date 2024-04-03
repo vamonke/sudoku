@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Controls renders correctly when showConflict is false 1`] = `
+exports[`KeyboardControls renders correctly when showConflict is false 1`] = `
 <div>
   <div
-    class="flex flex-row gap-4 mt-2 justify-center items-center"
+    class="flex flex-row gap-4 items-center justify-even"
   >
     <button
       data-testid="reset"
@@ -23,16 +23,16 @@ exports[`Controls renders correctly when showConflict is false 1`] = `
     <button
       data-testid="toggle"
     >
-      Show warnings (W)
+      Highlight errors (E)
     </button>
   </div>
 </div>
 `;
 
-exports[`Controls renders correctly when showConflict is true 1`] = `
+exports[`KeyboardControls renders correctly when showConflict is true 1`] = `
 <div>
   <div
-    class="flex flex-row gap-4 mt-2 justify-center items-center"
+    class="flex flex-row gap-4 items-center justify-even"
   >
     <button
       data-testid="reset"
@@ -52,7 +52,7 @@ exports[`Controls renders correctly when showConflict is true 1`] = `
     <button
       data-testid="toggle"
     >
-      Hide warnings (W)
+      Hide errors (E)
     </button>
   </div>
 </div>

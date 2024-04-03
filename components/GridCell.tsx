@@ -60,7 +60,7 @@ const GridCell = (props: Props) => {
     } else if (isHighlighted) {
       bgClassName = "bg-indigo-100";
     } else if (isSameValue) {
-      bgClassName = "bg-indigo-200";
+      bgClassName = "bg-orange-100";
     }
   }
 
@@ -91,7 +91,7 @@ const GridCell = (props: Props) => {
   const x = index % 9;
 
   const className = classNames(
-    "flex items-center justify-center text-center outline-none font-medium",
+    "flex items-center justify-center text-center outline-none font-light text-3xl",
     !editable && "select-none",
     textClassName,
     bgClassName,

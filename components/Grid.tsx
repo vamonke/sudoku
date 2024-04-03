@@ -49,6 +49,10 @@ export default function Grid(props: Props) {
       className={`grid grid-cols-9 grid-rows-9 h-full w-full border-4 ${
         isComplete ? "border-emerald-200" : "border-violet-200"
       } rounded-xl overflow-hidden`}
+      style={{
+        boxShadow:
+          "rgba(49, 46, 129, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+      }}
     >
       {board.map((cell, index) => {
         const isSelected = selectedIndex === index;

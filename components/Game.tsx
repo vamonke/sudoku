@@ -3,7 +3,7 @@
 import { useGame } from "@/hooks/useGame";
 import { SudokuPuzzle } from "@/types";
 import Grid from "./Grid";
-import Controls from "./Controls";
+import KeyboardControls from "./KeyboardControls";
 
 export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
   const { initialPuzzle } = props;
@@ -18,21 +18,22 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
     showConflict,
     conflictSet,
   } = useGame(initialPuzzle);
-
   return (
-    <main className="flex flex-col h-full">
+    <main className="flex flex-col h-full bg-indigo-50 p-4">
       <div className="p-4">
-        <h1 className="text-xl text-center">SUDOKU</h1>
-        <Controls
-          reset={reset}
-          newGame={handleNewGame}
-          undo={undo}
-          toggleShowConflict={toggleShowConflict}
-          showConflict={showConflict}
-        />
+        <h1 className="text-5xl text-center font-light text-indigo-900">
+          SUDOKU
+        </h1>
+        <div className="text-center text-gray-600 mt-4">
+          Fill the 9x9 grid with digits so that each column, row, and 3x3
+          section contains all the digits from 1 to 9.
+        </div>
       </div>
-      <div className="grow flex flex-col justify-center items-center pb-8">
-        <div className="aspect-square" style={{ height: 512, width: 512 }}>
+      <div className="grow flex flex-col justify-center items-center mt-4 mb-10">
+        <div
+          className="aspect-square h-full"
+          style={{ maxHeight: "75vh", maxWidth: "80vw" }}
+        >
           {board ? (
             <Grid
               board={board}
@@ -46,9 +47,19 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
           )}
         </div>
       </div>
-      <div className="flex flex-row gap-4 justify-center items-center p-4">
-        <div>
-          Use arrow keys to navigate. Use numbers 1-9 to fill in the cells.
+      <div>
+        <div className="flex flex-col gap-4 justify-center items-center pb-6 text-gray-600">
+          <div className="text-center">
+            Use arrow keys to navigate. Press 1-9 to fill in a cell. Press
+            Backspace to clear a cell.
+          </div>
+          <KeyboardControls
+            reset={reset}
+            newGame={handleNewGame}
+            undo={undo}
+            toggleShowConflict={toggleShowConflict}
+            showConflict={showConflict}
+          />
         </div>
       </div>
     </main>
