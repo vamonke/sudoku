@@ -29,21 +29,17 @@ const GridCell = (props: Props) => {
   } = props;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
     if (/^ArrowUp|ArrowDown|ArrowLeft|ArrowRight$/.test(e.key)) {
       onArrowKey(index, e.key);
     }
-    if (!/^[1-9]|Backspace|Tab$/.test(e.key)) {
-      e.preventDefault();
+    if (!editable) return;
+    if (/^[1-9]$/.test(e.key)) {
+      const parsedInt = parseInt(e.key);
+      onChangeCell(index, parsedInt);
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (value === "") {
-      onChangeCell?.(index, null);
-    } else {
-      const parsedInt = parseInt(value[value.length - 1]);
-      onChangeCell?.(index, parsedInt);
+    if (/^Backspace$|Delete$/.test(e.key)) {
+      onChangeCell(index, null);
     }
   };
 
@@ -73,7 +69,7 @@ const GridCell = (props: Props) => {
       className={className}
       value={value ?? ""}
       onKeyDown={handleKeyDown}
-      onChange={handleChange}
+      onChange={(e) => e.preventDefault()}
       readOnly={!editable}
       onFocus={() => onFocus(index)}
       onBlur={() => onBlur()}

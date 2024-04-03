@@ -67,19 +67,28 @@ describe("GridCell", () => {
     expect(onFocus).toHaveBeenCalled();
   });
 
-  it("calls onChangeCell when value is changed to a number", () => {
+  it("calls onChangeCell on key press number", () => {
     const onChangeCell = jest.fn();
     render(<GridCell index={0} cell={emptyCell} onChangeCell={onChangeCell} />);
-    fireEvent.change(screen.getByTestId("cell"), { target: { value: 6 } });
+    fireEvent.keyDown(screen.getByTestId("cell"), { key: "6" });
     expect(onChangeCell).toHaveBeenCalledWith(0, 6);
   });
 
-  it("calls onChangeCell when value is changed to empty", () => {
+  it("does not call onChangeCell if cell is uneditable", () => {
+    const onChangeCell = jest.fn();
+    render(
+      <GridCell index={0} cell={uneditableCell} onChangeCell={onChangeCell} />
+    );
+    fireEvent.keyDown(screen.getByTestId("cell"), { key: "6" });
+    expect(onChangeCell).not.toHaveBeenCalled();
+  });
+
+  it("calls onChangeCell on key press Backspace", () => {
     const onChangeCell = jest.fn();
     render(
       <GridCell index={0} cell={filledCell} onChangeCell={onChangeCell} />
     );
-    fireEvent.change(screen.getByTestId("cell"), { target: { value: "" } });
+    fireEvent.keyDown(screen.getByTestId("cell"), { key: "Backspace" });
     expect(onChangeCell).toHaveBeenCalledWith(0, null);
   });
 
