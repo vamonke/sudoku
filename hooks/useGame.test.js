@@ -1,7 +1,7 @@
-import { renderHook, act } from "@testing-library/react";
-import { useGame } from "./useGame";
-import { mockPuzzle, mockBoard } from "../utils/mocks";
+import { mockBoard, mockPuzzle } from "@/utils/mocks";
+import { act, renderHook } from "@testing-library/react";
 import { useBoard } from "./useBoard";
+import { useGame } from "./useGame";
 import { useMoves } from "./useMoves";
 
 jest.mock("./useBoard", () => ({ useBoard: jest.fn() }));

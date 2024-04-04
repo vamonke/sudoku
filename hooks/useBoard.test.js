@@ -1,6 +1,6 @@
-import { renderHook, act } from "@testing-library/react";
+import { mockBoard, mockBoard2, mockPuzzle } from "@/utils/mocks";
+import { act, renderHook } from "@testing-library/react";
 import { useBoard } from "./useBoard";
-import { mockPuzzle, mockBoard, mockBoard2 } from "../utils/mocks";
 
 describe("useBoard", () => {
   it("returns the initial value", () => {
