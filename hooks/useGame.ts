@@ -7,7 +7,7 @@ import { fetchNewPuzzle } from "@/utils/supabase/puzzle";
 
 export function useGame(initialPuzzle: SudokuPuzzle) {
   const { board, setBoard, reset, updateCell, isComplete, conflictSet } =
-    useBoard(initialPuzzle);
+    useBoard(initialPuzzle.puzzle);
   const { lastMove, canUndo, undo, addMove, clearMoves } = useMoves();
 
   const [puzzleId, setPuzzleId] = useState(initialPuzzle.id);

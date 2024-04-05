@@ -2,10 +2,10 @@ import { useCallback, useMemo, useReducer } from "react";
 import { Board, SudokuPuzzle } from "@/types";
 import { findConflict, parsePuzzleString } from "@/utils/puzzle";
 
-export function useBoard(initialPuzzle: SudokuPuzzle) {
+export function useBoard(initialPuzzle: string) {
   const [board, boardDispatch] = useReducer(
     boardReducer,
-    initialPuzzle.puzzle,
+    initialPuzzle,
     parsePuzzleString
   );
 
