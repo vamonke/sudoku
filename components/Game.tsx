@@ -7,17 +7,7 @@ import KeyboardControls from "./KeyboardControls";
 
 export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
   const { initialPuzzle } = props;
-  const {
-    board,
-    reset,
-    handleNewGame,
-    undo,
-    isComplete,
-    onChangeCell,
-    toggleShowConflict,
-    showConflict,
-    conflictSet,
-  } = useGame(initialPuzzle);
+  const game = useGame(initialPuzzle);
   return (
     <main className="flex flex-col h-full bg-indigo-50 p-4">
       <div className="p-4">
@@ -34,13 +24,13 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
           className="aspect-square h-full"
           style={{ maxHeight: "75vh", maxWidth: "80vw" }}
         >
-          {board ? (
+          {game.board ? (
             <Grid
-              board={board}
-              onChangeCell={onChangeCell}
-              isComplete={isComplete}
-              showConflict={showConflict}
-              conflictSet={conflictSet}
+              board={game.board}
+              onChangeCell={game.onChangeCell}
+              isComplete={game.isComplete}
+              showConflict={game.showConflict}
+              conflictSet={game.conflictSet}
             />
           ) : (
             <EmptyGrid />
@@ -54,11 +44,11 @@ export default function Game(props: { initialPuzzle: SudokuPuzzle }) {
             Backspace to clear a cell.
           </div>
           <KeyboardControls
-            reset={reset}
-            newGame={handleNewGame}
-            undo={undo}
-            toggleShowConflict={toggleShowConflict}
-            showConflict={showConflict}
+            reset={game.reset}
+            newGame={game.handleNewGame}
+            undo={game.undo}
+            toggleShowConflict={game.toggleShowConflict}
+            showConflict={game.showConflict}
           />
         </div>
       </div>

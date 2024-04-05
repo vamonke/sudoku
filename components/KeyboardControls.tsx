@@ -38,21 +38,19 @@ export default function KeyboardControls(props: Props) {
 
   return (
     <div className="flex flex-row gap-6 items-center justify-even">
-      {buttons.map(
-        ({ key: key, text: text, shortcut: shortcut, onClick: onClick }) => (
-          <button
-            key={key}
-            data-testid={key}
-            onClick={onClick}
-            className="flex items-center gap-2"
-          >
-            <div className="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2">
-              {shortcut}
-            </div>
-            <div>{text}</div>
-          </button>
-        )
-      )}
+      {buttons.map((button) => (
+        <button
+          key={button.key}
+          data-testid={button.key}
+          onClick={button.onClick}
+          className="flex items-center gap-2"
+        >
+          <div className="text-xs w-6 h-6 flex justify-center items-center bg-white shadow-sm rounded-md font-semibold border-2">
+            {button.shortcut}
+          </div>
+          <div>{button.text}</div>
+        </button>
+      ))}
     </div>
   );
 }
