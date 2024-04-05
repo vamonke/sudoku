@@ -1,6 +1,9 @@
-export const mockPuzzle = {
-  puzzle:
-    "837629145.4.318..2921574368.54186239163...8.7289.53416..28.56.1...241..3318967524",
+export const mockPuzzle =
+  "837629145.4.318..2921574368.54186239163...8.7289.53416..28.56.1...241..3318967524";
+
+export const mockSodukoPuzzle = {
+  id: "dda2a75e-1b2a-4070-ad09-0f28df09f6c0",
+  puzzle: mockPuzzle,
 };
 
 export const mockBoard = [

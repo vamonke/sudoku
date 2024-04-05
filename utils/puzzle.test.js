@@ -3,7 +3,7 @@ import { mockPuzzle, mockBoard, mockBoardConflict } from "./mocks";
 
 describe("parsePuzzleString", () => {
   it("converts a string to a board", () => {
-    const puzzle = parsePuzzleString(mockPuzzle.puzzle);
+    const puzzle = parsePuzzleString(mockPuzzle);
     expect(puzzle).toEqual(mockBoard);
   });
   it("ignores invalid characters", () => {

@@ -1,19 +1,19 @@
-import { useCallback, useReducer } from "react";
+import { useCallback, useState } from "react";
 import { GameMove } from "@/types";
 
 export function useMoves() {
-  const [moves, dispatch] = useReducer(movesReducer, []);
+  const [moves, setMoves] = useState<GameMove[]>([]);
 
   const undo = useCallback(() => {
-    dispatch({ type: "undo" });
+    setMoves((prevMoves) => prevMoves.slice(0, -1));
   }, []);
 
   const addMove = useCallback((move: GameMove) => {
-    dispatch({ type: "add", move });
+    setMoves((prevMoves) => [...prevMoves, move]);
   }, []);
 
   const clearMoves = useCallback(() => {
-    dispatch({ type: "clear" });
+    setMoves([]);
   }, []);
 
   const lastMove = moves[moves.length - 1];
@@ -26,23 +26,4 @@ export function useMoves() {
     addMove,
     clearMoves,
   };
-}
-
-type MovesAction =
-  | { type: "add"; move: GameMove }
-  | { type: "undo" }
-  | { type: "clear" };
-
-function movesReducer(state: GameMove[], action: MovesAction) {
-  switch (action.type) {
-    case "add": {
-      return [...state, action.move];
-    }
-    case "undo": {
-      return state.slice(0, -1);
-    }
-    case "clear": {
-      return [];
-    }
-  }
 }

@@ -1,4 +1,4 @@
-import { mockBoard, mockPuzzle } from "@/utils/mocks";
+import { mockBoard, mockSodukoPuzzle } from "@/utils/mocks";
 import { act, renderHook } from "@testing-library/react";
 import { useBoard } from "./useBoard";
 import { useGame } from "./useGame";
@@ -7,7 +7,7 @@ import { useMoves } from "./useMoves";
 jest.mock("./useBoard", () => ({ useBoard: jest.fn() }));
 jest.mock("./useMoves", () => ({ useMoves: jest.fn() }));
 jest.mock("../utils/supabase/puzzle", () => ({
-  fetchNewPuzzle: () => mockPuzzle,
+  fetchNewPuzzle: () => mockSodukoPuzzle,
 }));
 
 describe("useGame", () => {
@@ -34,7 +34,9 @@ describe("useGame", () => {
 
   it("onChangeCell calls updateCell and addMove", () => {
     const { result } = renderHook(useGame, {
-      initialProps: mockPuzzle,
+      initialProps: {
+        initialPuzzle: mockSodukoPuzzle,
+      },
     });
 
     act(() => result.current.onChangeCell(9, 6));
@@ -49,7 +51,7 @@ describe("useGame", () => {
 
   it("handleNewGame calls clearMoves and setBoard", async () => {
     const { result } = renderHook(useGame, {
-      initialProps: mockPuzzle,
+      initialProps: mockSodukoPuzzle,
     });
 
     await act(async () => result.current.handleNewGame());
@@ -60,7 +62,9 @@ describe("useGame", () => {
 
   it("undo calls updateCell and undo", () => {
     const { result } = renderHook(useGame, {
-      initialProps: mockPuzzle,
+      initialProps: {
+        mockSodukoPuzzle,
+      },
     });
 
     act(() => result.current.undo());
@@ -71,7 +75,7 @@ describe("useGame", () => {
 
   it("toggleShowConflict toggles value of showConflict", () => {
     const { result } = renderHook(useGame, {
-      initialProps: mockPuzzle,
+      initialProps: mockSodukoPuzzle,
     });
 
     expect(result.current.showConflict).toBe(true);

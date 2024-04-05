@@ -1,24 +1,26 @@
-import { useCallback, useMemo, useReducer } from "react";
-import { Board, SudokuPuzzle } from "@/types";
+import { useCallback, useMemo, useState } from "react";
 import { findConflict, parsePuzzleString } from "@/utils/puzzle";
+import { Board } from "@/types";
 
 export function useBoard(initialPuzzle: string) {
-  const [board, boardDispatch] = useReducer(
-    boardReducer,
-    initialPuzzle,
-    parsePuzzleString
-  );
-
-  const setBoard = (value: Board) => {
-    boardDispatch({ type: "setBoard", value });
-  };
+  const [board, setBoard] = useState<Board>(parsePuzzleString(initialPuzzle));
 
   const reset = useCallback(() => {
-    boardDispatch({ type: "reset" });
+    setBoard((prevBoard) =>
+      prevBoard.map((cell) => {
+        if (!cell.editable) return cell;
+        return { ...cell, value: null };
+      })
+    );
   }, []);
 
   const updateCell = (index: number, value: number | null) => {
-    boardDispatch({ type: "update", index, value });
+    setBoard((prevBoard) =>
+      prevBoard.map((cell, i) => {
+        if (i !== index) return cell;
+        return { ...cell, value };
+      })
+    );
   };
 
   const conflictSet = useMemo(() => findConflict(board), [board]);
@@ -33,29 +35,4 @@ export function useBoard(initialPuzzle: string) {
     isComplete,
     conflictSet,
   };
-}
-
-type BoardAction =
-  | { type: "reset" }
-  | { type: "update"; index: number; value: number | null }
-  | { type: "setBoard"; value: Board };
-
-function boardReducer(state: Board, action: BoardAction) {
-  switch (action.type) {
-    case "setBoard": {
-      return action.value;
-    }
-    case "reset": {
-      return state.map((cell) => {
-        if (!cell.editable) return cell;
-        return { ...cell, value: null };
-      });
-    }
-    case "update": {
-      return state.map((cell, index) => {
-        if (index !== action.index) return cell;
-        return { ...cell, value: action.value };
-      });
-    }
-  }
 }
